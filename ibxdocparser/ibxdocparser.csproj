@@ -6,6 +6,42 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <JavascriptDir>Javascript</JavascriptDir>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.101.0" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1823.32" />
+    <PackageReference Include="Microsoft.Web.WebView2.DevToolsProtocolExtension" Version="1.0.824" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="AppSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AppSettings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <DirsToClean Include="Javascript" />
+  </ItemGroup>
+
+  <Target Name="CopyDirectory" BeforeTargets="Build">
+    <!-- Delete the destination directory if it exists -->
+    <Exec Command="rd /s /q $(OutDir)\$(DestinationDirectory)\$(JavascriptDir)" Condition="Exists('$(OutDir)\$(DestinationDirectory)\$(JavascriptDir)')" />
+    <Message Text="Deleted the destination directory: $(OutDir)\$(DestinationDirectory)\$(JavascriptDir)" />
+
+
+    <!-- Copy the contents of the source directory to the destination directory -->
+    <Exec Command="xcopy /s /e /i /y $(MSBuildProjectDirectory)\$(JavascriptDir) $(OutDir)\$(DestinationDirectory)\$(JavascriptDir)" />
+    <Message Text="Copied the contents of  $(MSBuildProjectDirectory)\$(JavascriptDir) to $(OutDir)\$(DestinationDirectory)\$(JavascriptDir)" />
+  </Target>
+
+  <ItemGroup>
+    <None Update="AppSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>AppSettings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
 </Project>
