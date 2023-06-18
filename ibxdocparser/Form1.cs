@@ -1,6 +1,6 @@
 using Microsoft.Web.WebView2.Core;
-using Microsoft.Web.WebView2.Core.DevToolsProtocolExtension;
 using Microsoft.Web.WebView2.WinForms;
+using System.Diagnostics;
 using System.Text.Json;
 
 namespace ibxdocparser
@@ -11,7 +11,6 @@ namespace ibxdocparser
         private Queue<string> _profileUriQueue = new();
         private readonly IJsonParser<IbxProfile> _profileParser = new IbxProfileJsonParser();
         private IbxProfileExcelSaver _saver = new();
-        private string _outputPath = "";
 
         public frmIbxDocParser()
         {
@@ -23,13 +22,7 @@ namespace ibxdocparser
             await InitializeWebView();
             NavigateWebViewToSearchHome();
 
-            webView.CoreWebView2.GetDevToolsProtocolHelper().Console.MessageAdded += Console_MessageAdded;
-            webView.CoreWebView2.OpenDevToolsWindow();
-        }
-
-        private void Console_MessageAdded(object? sender, Microsoft.Web.WebView2.Core.DevToolsProtocolExtension.Console.MessageAddedEventArgs e)
-        {
-            System.Diagnostics.Debug.WriteLine(e.Message);
+            //webView.CoreWebView2.OpenDevToolsWindow();
         }
 
         private async Task InitializeWebView()
@@ -149,27 +142,7 @@ namespace ibxdocparser
             }
             else
             {
-                // Retry saving in case there's an error like the file is already open.
-                do
-                {
-                    try
-                    {
-                        _saver.Save(_outputPath);
-                        MessageBox.Show("Complete");
-                        break;
-                    }
-                    catch (Exception exc)
-                    {
-                        if (DialogResult.Cancel == MessageBox.Show(
-                            exc.ToString(),
-                            "Error",
-                            MessageBoxButtons.RetryCancel,
-                            MessageBoxIcon.Error))
-                        {
-                            break;
-                        }
-                    }
-                } while (true);
+                SaveExcelFile(_saver.Save);
             }
         }
 
@@ -202,9 +175,6 @@ namespace ibxdocparser
 
         private async void btnParseListings_Click(object sender, EventArgs e)
         {
-            var fileResult = saveFileDialog1.ShowDialog(this);
-            if (fileResult != DialogResult.OK) return;
-            _outputPath = saveFileDialog1.FileName;
             var scriptPath = Path.Combine(Environment.CurrentDirectory, "Javascript", "GetIbxDocProfilesFromListing.js");
             string script = File.ReadAllText(scriptPath);
             await webView.CoreWebView2.ExecuteScriptAsync(script);
@@ -236,6 +206,64 @@ namespace ibxdocparser
 
             string script = File.ReadAllText(@"Javascript\Test.js");
             await webView.CoreWebView2.ExecuteScriptAsync(script);
+        }
+
+        private async void btnParseLvhn_Click(object sender, EventArgs e)
+        {
+            string url = Microsoft.VisualBasic.Interaction.InputBox(
+                "Enter the URL to search from https://www.lvhn.org/doctors",
+                "Search Listing Page URL",
+                DefaultResponse: "https://www.lvhn.org/doctors?keys=Internal%20Medicine&f[0]=specialty:2118");
+
+            if (string.IsNullOrEmpty(url))
+            {
+                return;
+            }
+
+            List<LvhnProfile> profiles = await LvhnOrgHtmlParser.ParseFullResultsAsync(new Uri(url));
+            using var saver = new LvhnProfileExcelSaver();
+
+            for (var i = 0; i < profiles.Count; i++)
+            {
+                var profile = profiles[i];
+                Debug.WriteLine($"Parsing profile {i + 1}/{profiles.Count} ({profile.Summary?.Name})");
+                try
+                {
+                    await saver.AddProfileAsync(profile);
+                }
+                catch (Exception)
+                {
+                    Debug.WriteLine($"Failed to save profile for {profile.Summary?.Name}");
+                }
+            }
+
+            SaveExcelFile(saver.Save);
+        }
+
+        private string? SaveExcelFile(Action<string> save)
+        {
+            while (true)
+            {
+                if (DialogResult.Cancel == saveExcelFileDialog.ShowDialog())
+                {
+                    return null;
+                }
+
+                try
+                {
+                    save(saveExcelFileDialog.FileName);
+                    MessageBox.Show($"File saved successfully at: {saveExcelFileDialog.FileName}");
+                    return saveExcelFileDialog.FileName;
+                }
+                catch (Exception ex)
+                {
+                    if (DialogResult.Cancel == MessageBox.Show(ex.Message, "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error))
+                    {
+                        return null;
+                    }
+                }
+
+            };
         }
     }
 
