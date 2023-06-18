@@ -28,7 +28,7 @@ namespace ibxdocparser
         public static HtmlNode? GetSubsection(HtmlNode sectionNode, string label)
         {
             var header = sectionNode
-                .SelectNodes("//h3")
+                .SelectNodes(".//h3")
                 .Where(n => n.GetEscapedInnerText().Equals(label, StringComparison.CurrentCultureIgnoreCase))
                 .FirstOrDefault();
 
@@ -48,13 +48,11 @@ namespace ibxdocparser
 
         public static (string Title, string Value)[] GetSubsectionListings(HtmlNode subsectionNode)
         {
-            var doc = new HtmlAgilityPack.HtmlDocument();
-            doc.LoadHtml(subsectionNode.OuterHtml);
-            var result = doc.DocumentNode
-                .SelectNodes("//p")
+            var result = subsectionNode
+                .SelectNodes(".//p")
                 .Select(n =>
                 {
-                    string title = n.SelectSingleNode("//strong")
+                    string title = n.SelectSingleNode(".//strong")
                         ?.GetEscapedInnerText()
                         ?? "";
 
@@ -118,13 +116,15 @@ namespace ibxdocparser
         }
 
         private string[] ParseConditionsTreated() => _node
-                .SelectNodes($"//ul[{Utilities.XpathAttrContains("full")} and @aria-describedby='conditions-label']/li")
+                .SelectSingleNode($"//ul[{Utilities.XpathAttrContains("full")} and @aria-describedby='conditions-label']")
+                ?.SelectNodes(".//li")
                 ?.Select(x => x.GetEscapedInnerText())
                 .Where(s => s.Length > 0)
                 .ToArray()
             ?? Array.Empty<string>();
         private string[] ParseServicesOffered() => _node
-                .SelectNodes($"//ul[{Utilities.XpathAttrContains("full")} and @aria-describedby='services-label']/li")
+                .SelectSingleNode($"//ul[{Utilities.XpathAttrContains("full")} and @aria-describedby='services-label']")
+                ?.SelectNodes(".//li")
                 ?.Select(x => x.GetEscapedInnerText())
                 .Where(s => s.Length > 0)
                 .ToArray()

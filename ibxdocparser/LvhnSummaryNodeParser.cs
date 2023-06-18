@@ -63,7 +63,7 @@ namespace ibxdocparser
         {
             string href = _resultNode
                 .SelectSingleNodeWithClass("field--name-node-title", "div")
-                ?.SelectSingleNode("//a")
+                ?.SelectSingleNode(".//a")
                 ?.GetAttributeValue("href", "")
                 ?? throw new Exception("Link not found.");
             return new Uri(_listingSource, href);
@@ -92,20 +92,20 @@ namespace ibxdocparser
         }
 
         public string[] ParseAreasOfFocus() =>
-            (_resultNode.SelectNodes($"//div[{Utilities.XpathAttrContains("highlights")}]/h4")
+            (_resultNode.SelectNodes($".//div[{Utilities.XpathAttrContains("highlights")}]/h4")
                 .FirstOrDefault(n => n.GetEscapedInnerText().Contains("Area of Focus", StringComparison.CurrentCultureIgnoreCase))
                 ?.NextSiblingElements()
                 .FirstOrDefault(n => n.Name == "ul")
-                .ChildNodes
+                .SelectNodes(".//li")
                 .Select(n => n.GetEscapedInnerText())
                 .ToArray()) ?? Array.Empty<string>();
 
         public string[] ParseSpecialties() =>
-            (_resultNode.SelectNodes($"//div[{Utilities.XpathAttrContains("highlights")}]/h4")
+            (_resultNode.SelectNodes($".//div[{Utilities.XpathAttrContains("highlights")}]/h4")
                 .FirstOrDefault(n => n.GetEscapedInnerText().Contains("Specialties", StringComparison.CurrentCultureIgnoreCase))
                 ?.NextSiblingElements()
                 .FirstOrDefault(n => n.Name == "ul")
-                .ChildNodes
+                .SelectNodes(".//li")
                 .Select(n => n.GetEscapedInnerText())
                 .ToArray()) ?? Array.Empty<string>();
     }
