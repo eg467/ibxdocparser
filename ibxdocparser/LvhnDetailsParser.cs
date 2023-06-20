@@ -86,15 +86,33 @@ namespace ibxdocparser
             var subsection = GetSubsection(_historyNode, historyType);
             if (subsection is null) goto NotFound;
             var listings = GetSubsectionListings(subsection).ToList();
+
+            static (string stripped, int? year) ExtractYear(string str)
+            {
+                var yearMatch = System.Text.RegularExpressions.Regex.Match(str, @"\d{4}");
+                return yearMatch.Success
+                    ? (str.Replace(yearMatch.Value, "").Trim('\r', '\n', ',', '.', ':', ' ', '\t'), int.Parse(yearMatch.Value))
+                    : (str, null);
+            }
+
             return listings
                 .Select(x =>
                 {
-                    var yearMatch = System.Text.RegularExpressions.Regex.Match(x.Value, @"\d{4}$");
-                    int? year = yearMatch.Success ? int.Parse(yearMatch.Value) : null;
-                    string description = yearMatch.Success
-                        ? x.Value.Replace(yearMatch.Value, "").Trim()
-                        : x.Value;
-                    return new Experience(x.Title, description, year);
+                    (string strippedValue, int? valueYear) = ExtractYear(x.Value);
+                    (string strippedTitle, int? titleYear) = ExtractYear(x.Title);
+
+                    int? year = valueYear ?? titleYear;
+                    string type = strippedTitle;
+                    string institution = strippedValue;
+
+                    string[] valueParts = strippedValue.Split(",").Select(x => x.Trim()).ToArray();
+                    if (valueParts.Length > 1)
+                    {
+                        institution = valueParts[0];
+                        type = $"{type} ({valueParts[1]})";
+                    }
+
+                    return new Experience(type, institution, year);
                 })
                 .ToArray();
 

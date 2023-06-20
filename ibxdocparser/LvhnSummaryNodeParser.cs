@@ -24,7 +24,7 @@ namespace ibxdocparser
                 ParseDetailsLink(),
                 ParseSpecialties(),
                 ParseAreasOfFocus(),
-                ParseLocation(),
+                ParseLocations(),
                 ParseImageUri(),
                 ParseAcceptingNewPatients());
             return result;
@@ -32,11 +32,11 @@ namespace ibxdocparser
 
 
         private bool ParseAcceptingNewPatients() =>
-            _resultNode.SelectSingleNode($"//*[{Utilities.XpathAttrContains("accepting-new-patients")}]") is not null;
+            _resultNode.SelectSingleNode($".//*[{Utilities.XpathAttrContains("accepting-new-patients")}]") is not null;
 
         private Uri? ParseImageUri()
         {
-            string? relativeSource = _resultNode.SelectSingleNode($"//div[{Utilities.XpathAttrContains("headshot")}]//img")
+            string? relativeSource = _resultNode.SelectSingleNode($".//div[{Utilities.XpathAttrContains("headshot")}]//img")
                 ?.GetAttributeValue("src", "");
 
             if (string.IsNullOrEmpty(relativeSource)) return null;
@@ -58,7 +58,6 @@ namespace ibxdocparser
             return name;
         }
 
-
         private Uri ParseDetailsLink()
         {
             string href = _resultNode
@@ -69,35 +68,33 @@ namespace ibxdocparser
             return new Uri(_listingSource, href);
         }
 
-        private Location? ParseLocation()
-        {
-            var locationNode = _resultNode.SelectSingleNodeWithClass("node--type-location", "div");
-            return locationNode is null
-                ? null
-                : locationNode is not null ? new Location()
+        private Location[] ParseLocations() =>
+            _resultNode
+                .SelectSingleNode($".//div[{Utilities.XpathAttrContains("locations")}]")
+                .SelectNodes($".//p[{Utilities.XpathAttrContains("address")}]")
+                ?.Select(locationNode => new Location()
                 {
-                    Address = new()
-                    {
-                        City = locationNode.SelectSingleNodeWithClass("locality", "span")?.GetEscapedInnerText() ?? "",
-                        State = locationNode.SelectSingleNodeWithClass("administrative-area", "span")?.GetEscapedInnerText() ?? "",
-                        Line1 = locationNode.SelectSingleNodeWithClass("address-line1", "span")?.GetEscapedInnerText() ?? "",
-                        Line2 = locationNode.SelectSingleNodeWithClass("address-line2", "span")?.GetEscapedInnerText() ?? "",
-                        County = "",
-                        Country = locationNode.SelectSingleNodeWithClass("country", "span")?.GetEscapedInnerText() ?? "",
-                        Zip = locationNode.SelectSingleNodeWithClass("postal-code", "span")?.GetEscapedInnerText() ?? "",
-                    },
+                    Address = new(
+                           locationNode.SelectSingleNodeWithClass("address-line1", "span")?.GetEscapedInnerText() ?? "",
+                           locationNode.SelectSingleNodeWithClass("address-line2", "span")?.GetEscapedInnerText() ?? "",
+                           locationNode.SelectSingleNodeWithClass("locality", "span")?.GetEscapedInnerText() ?? "",
+                           locationNode.SelectSingleNodeWithClass("administrative-area", "span")?.GetEscapedInnerText() ?? "",
+                           locationNode.SelectSingleNodeWithClass("postal-code", "span")?.GetEscapedInnerText() ?? ""),
                     Name = locationNode.SelectSingleNodeWithClass("field-name-node-title")?.GetEscapedInnerText() ?? "",
                     Phone = locationNode.SelectSingleNodeWithClass("field--name-field-phone", "div")?.GetEscapedInnerText() ?? "",
-                } : null;
-        }
+                })
+                .Distinct()
+                .ToArray()
+                ?? Array.Empty<Location>();
 
         public string[] ParseAreasOfFocus() =>
             (_resultNode.SelectNodes($".//div[{Utilities.XpathAttrContains("highlights")}]/h4")
                 .FirstOrDefault(n => n.GetEscapedInnerText().Contains("Area of Focus", StringComparison.CurrentCultureIgnoreCase))
                 ?.NextSiblingElements()
                 .FirstOrDefault(n => n.Name == "ul")
-                .SelectNodes(".//li")
+                ?.SelectNodes(".//li")
                 .Select(n => n.GetEscapedInnerText())
+                .Distinct()
                 .ToArray()) ?? Array.Empty<string>();
 
         public string[] ParseSpecialties() =>
@@ -105,8 +102,9 @@ namespace ibxdocparser
                 .FirstOrDefault(n => n.GetEscapedInnerText().Contains("Specialties", StringComparison.CurrentCultureIgnoreCase))
                 ?.NextSiblingElements()
                 .FirstOrDefault(n => n.Name == "ul")
-                .SelectNodes(".//li")
+                ?.SelectNodes(".//li")
                 .Select(n => n.GetEscapedInnerText())
+                .Distinct()
                 .ToArray()) ?? Array.Empty<string>();
     }
 }

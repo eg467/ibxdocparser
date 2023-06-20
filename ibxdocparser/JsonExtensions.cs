@@ -25,6 +25,33 @@ namespace ibxdocparser
 
         public static double? GetPropertyLong(this JsonElement element, string propertyName) =>
             element.TryGetProperty(propertyName, out var x) ? x.TryGetUInt64(out var y) ? y : null : null;
+
+        internal static Location ParseLocation(this JsonElement el) =>
+           new(
+               Name: el.GetPropertyString("name"),
+               Phone: el.GetPropertyString("phone"),
+               Latitude: el.GetPropertyDouble("latitude") ?? 0,
+               Longitude: el.GetPropertyDouble("longitude") ?? 0,
+               InNetwork: el.TryGetProperty("inNetwork", out var inNetwork)
+                   ? inNetwork.GetBoolean() : null,
+               Address: el.TryGetProperty("address", out var addressNode)
+                   ? new Address(
+                       addressNode.GetPropertyString("line1") ?? "",
+                       addressNode.GetPropertyString("line2") ?? "",
+                       addressNode.GetPropertyString("city") ?? "",
+                       addressNode.GetPropertyString("state") ?? "",
+                       addressNode.GetPropertyString("zip") ?? "")
+                   : null
+            );
+
+        internal static Location[] ParseLocations(this JsonElement el) =>
+            el
+              .EnumerateArray()
+              .Select(ParseLocation)
+              .Where(x => !string.IsNullOrEmpty(x.Name) || !string.IsNullOrEmpty(x.Address?.Line1))
+              .DistinctBy(h => h.ToString().ToUpper())
+              .ToArray()
+           ?? Array.Empty<Location>();
     }
 
 }

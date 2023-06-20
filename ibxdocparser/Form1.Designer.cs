@@ -13,6 +13,9 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
+            (_ibxSaver as IDisposable)?.Dispose();
+            (_lvhnSaver as IDisposable)?.Dispose();
+
             if (disposing && (components != null))
             {
                 components.Dispose();
@@ -34,8 +37,9 @@
             flowLayoutPanel1 = new FlowLayoutPanel();
             btnCopyUrl = new Button();
             btnTest = new Button();
-            saveExcelFileDialog = new SaveFileDialog();
             btnParseLvhn = new Button();
+            saveExcelFileDialog = new SaveFileDialog();
+            btnClearDatabase = new Button();
             ((System.ComponentModel.ISupportInitialize)webView).BeginInit();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
@@ -82,6 +86,7 @@
             flowLayoutPanel1.Controls.Add(btnCopyUrl);
             flowLayoutPanel1.Controls.Add(btnTest);
             flowLayoutPanel1.Controls.Add(btnParseLvhn);
+            flowLayoutPanel1.Controls.Add(btnClearDatabase);
             flowLayoutPanel1.Dock = DockStyle.Top;
             flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Margin = new Padding(2);
@@ -111,10 +116,6 @@
             btnTest.UseVisualStyleBackColor = true;
             btnTest.Click += btnTest_Click;
             // 
-            // saveFileDialog1
-            // 
-            saveExcelFileDialog.Filter = "Excel Spreadsheet|*.xlsx";
-            // 
             // btnParseLvhn
             // 
             btnParseLvhn.Location = new Point(528, 3);
@@ -124,6 +125,20 @@
             btnParseLvhn.Text = "Parse lvhn.org doctor list";
             btnParseLvhn.UseVisualStyleBackColor = true;
             btnParseLvhn.Click += btnParseLvhn_Click;
+            // 
+            // saveExcelFileDialog
+            // 
+            saveExcelFileDialog.Filter = "Excel Spreadsheet|*.xlsx";
+            // 
+            // btnClearDatabase
+            // 
+            btnClearDatabase.Location = new Point(739, 3);
+            btnClearDatabase.Name = "btnClearDatabase";
+            btnClearDatabase.Size = new Size(96, 31);
+            btnClearDatabase.TabIndex = 4;
+            btnClearDatabase.Text = "Clear Database";
+            btnClearDatabase.UseVisualStyleBackColor = true;
+            btnClearDatabase.Click += btnClearDatabase_Click;
             // 
             // frmIbxDocParser
             // 
@@ -151,5 +166,6 @@
         private SaveFileDialog saveExcelFileDialog;
         private Button btnTest;
         private Button btnParseLvhn;
+        private Button btnClearDatabase;
     }
 }

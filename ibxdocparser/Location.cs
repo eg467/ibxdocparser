@@ -1,15 +1,8 @@
 ﻿namespace ibxdocparser
 {
-    internal record Location
+    internal record Location(string? Name = null, double Latitude = 0, double Longitude = 0, Address? Address = null, string? Phone = null, bool? InNetwork = null)
     {
-        public string Name { get; set; }
-        public double? Latitude { get; set; }
-        public double? Longitude { get; set; }
-        public Address? Address { get; set; }
-        public string? Phone { get; set; }
-
-        public override string ToString() => $"{Name} ({Address}) ({Phone})";
+        public override string ToString() => $"{Name} ({Address})";
     }
-
 }
 

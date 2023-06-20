@@ -1,28 +1,10 @@
 ﻿using System.Text.Json;
-using System.Text.RegularExpressions;
 
 namespace ibxdocparser
 {
     internal interface IJsonParser<T>
     {
         public T Parse(string json);
-    }
-
-    internal record IbxProfile
-    {
-        public string? FirstName { get; set; }
-        public string? MiddleName { get; set; }
-        public string? LastName { get; set; }
-        public string? FullName { get; set; }
-        public long? Id { get; set; }
-        public string? Gender { get; set; }
-        public string? BoardCertified { get; set; }
-        public string? Education { get; set; }
-        public string? Residency { get; set; }
-        public string? ImageUri { get; set; }
-        public string[] GroupAffiliations { get; set; } = Array.Empty<string>();
-        public string[] HospitalAffiliations { get; set; } = Array.Empty<string>();
-        public Location[] Locations { get; set; } = Array.Empty<Location>();
     }
 
     internal class IbxProfileJsonParser : IJsonParser<IbxProfile>
@@ -76,6 +58,31 @@ namespace ibxdocparser
                 }
             }
 
+
+            var education =
+                GetAttributeValue(providerAttrs, "EDUCATION")
+                  ?.EnumerateArray()
+                  .Where(x => !x.GetPropertyString("code")?.Equals("Residency", StringComparison.CurrentCultureIgnoreCase) == true)
+                  .Select(x => new Experience(
+                          x.GetPropertyString("code") ?? "",
+                          x.GetPropertyString("institution") ?? "",
+                          int.TryParse(x.GetPropertyString("year"), out var year) ? year : null))
+                  .DistinctBy(x => x.ToString().ToUpper())
+                  .ToArray()
+                ?? Array.Empty<Experience>();
+
+            var residency =
+                GetAttributeValue(providerAttrs, "EDUCATION")
+                  ?.EnumerateArray()
+                  .Where(x => x.GetPropertyString("code")?.Equals("Residency", StringComparison.CurrentCultureIgnoreCase) == true)
+                  .Select(x => new Experience(
+                          x.GetPropertyString("code") ?? "",
+                          x.GetPropertyString("institution") ?? "",
+                          int.TryParse(x.GetPropertyString("year"), out var year) ? year : null))
+                  .DistinctBy(x => x.ToString().ToUpper())
+                  .ToArray()
+                ?? Array.Empty<Experience>();
+
             try
             {
                 return new IbxProfile()
@@ -88,56 +95,20 @@ namespace ibxdocparser
                     Id = rootElement.GetPropertyIfExists("id")?.GetInt64(),
                     Gender = GetAttributeValue(providerAttrs, "GENDER")?.GetString(),
                     BoardCertified = BoardCertification(),
-                    Education = GetAttributeValue(providerAttrs, "EDUCATION")
-                   ?.EnumerateArray()
-                   .Where(x => Regex.IsMatch(x.GetPropertyString("code") ?? "", "^(MD|DO)$", RegexOptions.IgnoreCase))
-                   .Select(x => x.GetPropertyString("institution"))
-                   .FirstOrDefault(),
-
-                    Residency =
-                 GetAttributeValue(providerAttrs, "EDUCATION")?.EnumerateArray()
-                     .Where(x => Regex.IsMatch(x.GetPropertyString("code") ?? "", "^Residency$", RegexOptions.IgnoreCase))
-                     .Select(x => x.GetPropertyString("institution"))
-                     .FirstOrDefault(),
-
+                    Education = education,
+                    Residencies = residency,
                     GroupAffiliations =
-                   GetAttributeValue(providerAttrs, "GROUP_AFFILIATIONS")
-                       ?.EnumerateArray()
-                       .Select(x => x.GetPropertyString("name") ?? "")
-                       .Where(x => x.Length > 0)
-                       .ToArray() ?? Array.Empty<string>(),
-
+                        GetAttributeValue(providerAttrs, "GROUP_AFFILIATIONS")
+                        ?.ParseLocations()
+                        ?? Array.Empty<Location>(),
                     Locations =
-                   rootElement.GetPropertyIfExists("locations")
-                   ?.EnumerateArray()
-                   .Select(l =>
-                       new Location()
-                       {
-                           Address = new Address()
-                           {
-                               Line1 = l.GetDescendantString("address.line1"),
-                               Line2 = l.GetDescendantString("address.line2"),
-                               City = l.GetDescendantString("address.city"),
-                               State = l.GetDescendantString("address.state"),
-                               Country = l.GetDescendantString("address.country"),
-                               Zip = l.GetDescendantString("address.zip"),
-                               County = l.GetDescendantString("address.county"),
-                           },
-                           Latitude = l.GetPropertyDouble("latitude"),
-                           Longitude = l.GetPropertyDouble("longitude"),
-                           Name = l.GetPropertyString("name") ?? "",
-                           Phone = l.GetPropertyString("phone") ?? ""
-                       }
-                   )
-                   .ToArray()
-                   ?? Array.Empty<Location>(),
-
+                        rootElement.GetPropertyIfExists("locations")
+                        ?.ParseLocations()
+                        ?? Array.Empty<Location>(),
                     HospitalAffiliations =
-                   GetAttributeValue(providerAttrs, "HOSPITAL_AFFILIATIONS")
-                       ?.EnumerateArray()
-                       .Select(x => x.GetPropertyString("name") ?? "")
-                       .Where(x => x.Length > 0)
-                       .ToArray() ?? Array.Empty<string>()
+                        GetAttributeValue(providerAttrs, "HOSPITAL_AFFILIATIONS")
+                        ?.ParseLocations()
+                        ?? Array.Empty<Location>()
                 };
             }
             catch (Exception)

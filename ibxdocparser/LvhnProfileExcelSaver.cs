@@ -3,9 +3,21 @@ using System.Diagnostics;
 
 namespace ibxdocparser
 {
-    internal sealed class LvhnProfileExcelSaver : IDisposable
+    internal interface IProfileSaver<TProfile>
     {
-        private readonly ExcelProfileSaver<LvhnProfile> _saver = new("LVHN Profile");
+        public Task StartSessionAsync(string label, Uri? source);
+        public Task AddProfileAsync(TProfile profile);
+        public Task SaveAsync();
+    }
+
+    internal sealed class LvhnProfileExcelSaver : IProfileSaver<LvhnProfile>
+    {
+        private readonly ExcelProfileSaver<LvhnProfile> _saver = new()
+        {
+            ProfileWorksheetName = " LVHN Profiles"
+        };
+
+        public string FilePath { get; set; } = "LvhnProfiles.xlsx";
 
         private static string ListString(IEnumerable<string>? items)
             => string.Join(", ", items ?? Enumerable.Empty<string>());
@@ -52,12 +64,10 @@ namespace ibxdocparser
                     false => "NO",
                     null => ""
                 }),
-                ("Location",  (x) => x.Summary?.Location?.ToString() ?? "")
+                ("Location",  (x) => string.Join("\r\n\r\n", x.Summary?.Locations.Select(l => l.ToString()) ?? Array.Empty<string>()))
             };
             _saver.SetFields(fields);
         }
-
-
 
         /// <summary>
         /// Appends the details for a profile to a new line in the spreadsheet.
@@ -84,14 +94,26 @@ namespace ibxdocparser
         }
 
 
-        public void Save(string path)
+        public Task SaveAsync()
         {
-            _saver.Save(path);
+            if (string.IsNullOrEmpty(FilePath))
+            {
+                throw new InvalidOperationException("No file path set.");
+            }
+
+            _saver.Save(FilePath);
+            return Task.CompletedTask;
         }
 
         public void Dispose()
         {
             _saver.Dispose();
+        }
+
+        public Task StartSessionAsync(string label, Uri? source)
+        {
+            _saver.ProfileWorksheetName = label;
+            return Task.CompletedTask;
         }
     }
 }

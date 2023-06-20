@@ -1,0 +1,2314 @@
+{
+	"provider": {
+		"firstName": "Erin",
+		"middleName": "M",
+		"lastName": "Bendas",
+		"fullName": "Bendas, Erin M"
+	},
+	"searchRelevantLocationCount": 0,
+	"sourceProviderKeys": [
+		"362|PAB9|003568811||03",
+		"362|PAK6|003568811||03",
+		"362|PAK7|003568811||03",
+		"362|PAM2|003568811||03",
+		"362|PA6A|003568811||03",
+		"362|PAM3|003568811||03",
+		"IBXBLUE_S|003568811|003568811002821062V3",
+		"362|PAM3|003568811||07",
+		"362|PA6A|003568811||07",
+		"362|PAK7|003568811||07",
+		"362|PAM2|003568811||07",
+		"362|PAB9|003568811||07",
+		"362|PAK6|003568811||07",
+		"IBXBLUE_S|003568811|003568811002821062V7",
+		"362|PAB9|003568811||06",
+		"362|PAM3|003568811||06",
+		"362|PAK7|003568811||06",
+		"362|PAK6|003568811||06",
+		"362|PAM2|003568811||06",
+		"362|PA6A|003568811||06",
+		"IBXBLUE_S|003568811|003568811005112523V6"
+	],
+	"totalLocationCount": 3,
+	"attributes": [
+		{
+			"key": "GENDER",
+			"name": "GENDER",
+			"value": "Female"
+		},
+		{
+			"key": "PROVIDER_LANGUAGES",
+			"name": "LANGUAGES SPOKEN",
+			"value": [
+				"English"
+			]
+		},
+		{
+			"key": "BOARD_CERTIFICATION",
+			"name": "BOARD CERTIFICATION"
+		},
+		{
+			"key": "EDUCATION",
+			"name": "EDUCATION",
+			"value": [
+				{
+					"code": "DO",
+					"institution": "University Of Kansas",
+					"yearGraduated": "2010"
+				},
+				{
+					"code": "Residency",
+					"institution": "St Lukes Hospital"
+				}
+			]
+		},
+		{
+			"key": "GROUP_AFFILIATIONS",
+			"name": "GROUP AFFILIATIONS",
+			"value": [
+				{
+					"providerId": 3014042333943257,
+					"locationId": 8449825593223112,
+					"name": "St Lukes Palliative Care",
+					"address": {
+						"line1": "240 Cetronia Road",
+						"line2": "Suite 225 South",
+						"city": "Allentown",
+						"state": "PA",
+						"country": "US",
+						"zip": "18104",
+						"county": "Lehigh"
+					},
+					"inNetwork": true
+				},
+				{
+					"providerId": 1181314526638298,
+					"locationId": 1885490257254326,
+					"name": "St. Luke's Palliative Care Group",
+					"address": {
+						"line1": "3000 St. Luke's Dr",
+						"city": "Quakertown",
+						"state": "PA",
+						"country": "US",
+						"zip": "18951",
+						"county": "Bucks"
+					},
+					"inNetwork": true
+				},
+				{
+					"providerId": 3014042333943257,
+					"locationId": 8262923085044638,
+					"name": "St. Luke's Palliative Care Group",
+					"address": {
+						"line1": "1021 Park Avenue",
+						"line2": "Suite 200",
+						"city": "Quakertown",
+						"state": "PA",
+						"country": "US",
+						"zip": "18951",
+						"county": "Bucks"
+					},
+					"inNetwork": true
+				}
+			]
+		},
+		{
+			"key": "HOSPITAL_AFFILIATIONS",
+			"name": "HOSPITAL AFFILIATIONS",
+			"value": [
+				{
+					"providerId": 7414616437585822,
+					"locationId": 801182601207454,
+					"name": "St Lukes Hospital",
+					"address": {
+						"line1": "801 OSTRUM STREET",
+						"city": "BETHLEHEM",
+						"state": "PA",
+						"country": "US",
+						"zip": "18015",
+						"county": "Northampton"
+					},
+					"inNetwork": true
+				},
+				{
+					"providerId": 8341790255663607,
+					"locationId": 5835637247222106,
+					"name": "St Lukes Quakertown Hospital",
+					"address": {
+						"line1": "3000 St. Luke's Drive",
+						"city": "Quakertown",
+						"state": "PA",
+						"country": "US",
+						"zip": "18951",
+						"county": "Bucks"
+					},
+					"inNetwork": true
+				},
+				{
+					"providerId": 8341790255663607,
+					"locationId": 3834039843293775,
+					"name": "St Lukes Quakertown Hospital",
+					"address": {
+						"line1": "1021 PARK AVENUE",
+						"city": "QUAKERTOWN",
+						"state": "PA",
+						"country": "US",
+						"zip": "18951",
+						"county": "Bucks"
+					},
+					"inNetwork": true
+				}
+			]
+		}
+	],
+	"messages": [],
+	"reviewsKey": "362|PAB9|003568811||03",
+	"id": 7674538101538364,
+	"providerCategoryCode": "P",
+	"degreeCredentials": [
+		"DO"
+	],
+	"augmented": false,
+	"locations": [
+		{
+			"name": "St Lukes Palliative Care",
+			"address": {
+				"line1": "240 Cetronia Road",
+				"line2": "Suite 225 South",
+				"city": "Allentown",
+				"state": "PA",
+				"country": "US",
+				"zip": "18104",
+				"county": "Lehigh"
+			},
+			"phone": "(484) 526-2034",
+			"distance": 1.3,
+			"providerLocationKey": "7674538101538364-1511195471034659",
+			"id": 1511195471034659,
+			"latitude": 40.615486,
+			"longitude": -75.5446,
+			"pcp": {
+				"eligible": false,
+				"selectable": false
+			},
+			"primaryLocation": false,
+			"messages": [],
+			"rewardable": false,
+			"attributes": [
+				{
+					"key": "SPECIALTY",
+					"name": "SPECIALTIES",
+					"value": [
+						"Hospice & Palliative Medicine",
+						"Internal Medicine"
+					]
+				},
+				{
+					"key": "OFFICE_HOURS",
+					"name": "OFFICE HOURS",
+					"value": {
+						"monHourFrom": 800,
+						"monHourTo": 1700,
+						"tueHourFrom": 800,
+						"tueHourTo": 1700,
+						"wedHourFrom": 800,
+						"wedHourTo": 1700,
+						"thuHourFrom": 800,
+						"thuHourTo": 1700,
+						"friHourFrom": 800,
+						"friHourTo": 1700,
+						"satHourFrom": 0,
+						"satHourTo": 0,
+						"sunHourFrom": 0,
+						"sunHourTo": 0,
+						"isExtended": false
+					}
+				},
+				{
+					"key": "AREA_OF_FOCUS",
+					"name": "AREAS OF FOCUS",
+					"value": []
+				},
+				{
+					"key": "QUALITY",
+					"name": "QUALITY",
+					"value": {
+						"recognitionGroups": [],
+						"hasQuality": false
+					}
+				},
+				{
+					"key": "CCA_GROUP_KEY_NPI",
+					"name": "NPI",
+					"value": [
+						"1124266630"
+					]
+				},
+				{
+					"key": "PLANS_ACCEPTED",
+					"name": "PLANS ACCEPTED",
+					"value": [
+						{
+							"type": "category",
+							"name": "Medical",
+							"pcpEligible": false,
+							"plans": [],
+							"subCategories": [
+								{
+									"type": "category",
+									"name": "To find National providers",
+									"pcpEligible": false,
+									"plans": [
+										{
+											"type": "plan",
+											"name": "National BlueCard PPO",
+											"productCode": "813",
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										}
+									],
+									"subCategories": []
+								},
+								{
+									"type": "category",
+									"name": "To find providers for Keystone and Personal Choice plans",
+									"pcpEligible": false,
+									"plans": [
+										{
+											"type": "plan",
+											"name": "Keystone HMO Proactive",
+											"productCode": "470",
+											"networkTierList": [
+												{
+													"categoryName": "Medical",
+													"tierValue": 1,
+													"clientTierConfgrs": [
+														{
+															"tierNum": 1,
+															"tier": "1",
+															"tierName": "Tier 1 - Preferred",
+															"tierDesc": " ",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": true
+														},
+														{
+															"tierNum": 2,
+															"tier": "2",
+															"tierName": "Tier 2 - Enhanced",
+															"tierDesc": " ",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": false
+														},
+														{
+															"tierNum": 3,
+															"tier": "3",
+															"tierName": "Tier 3 - Standard",
+															"tierDesc": " ",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": false
+														}
+													]
+												}
+											],
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										},
+										{
+											"type": "plan",
+											"name": "Keystone HMO CHIP",
+											"productCode": "1094",
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										},
+										{
+											"type": "plan",
+											"name": "Personal Choice PPO",
+											"productCode": "360",
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										},
+										{
+											"type": "plan",
+											"name": "Keystone HMO/POS/Direct POS",
+											"productCode": "460",
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										},
+										{
+											"type": "plan",
+											"name": "Personal Choice EPO",
+											"productCode": "448",
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										}
+									],
+									"subCategories": []
+								},
+								{
+									"type": "category",
+									"name": "To find Blue High Performance providers",
+									"pcpEligible": false,
+									"plans": [
+										{
+											"type": "plan",
+											"name": "Blue High Performance",
+											"productCode": "2204",
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										}
+									],
+									"subCategories": []
+								}
+							]
+						},
+						{
+							"type": "category",
+							"name": "Company Specific Networks",
+							"pcpEligible": false,
+							"plans": [],
+							"subCategories": [
+								{
+									"type": "category",
+									"name": "To find National providers",
+									"pcpEligible": false,
+									"plans": [
+										{
+											"type": "plan",
+											"name": "National BlueCard PPO",
+											"productCode": "813",
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										}
+									],
+									"subCategories": []
+								},
+								{
+									"type": "category",
+									"name": "To find Medical providers for PennCare Network",
+									"pcpEligible": false,
+									"plans": [
+										{
+											"type": "plan",
+											"name": "PennCare Network",
+											"productCode": "446",
+											"networkTierList": [
+												{
+													"categoryName": "Medical",
+													"tierValue": 2,
+													"clientTierConfgrs": [
+														{
+															"tierNum": 1,
+															"tier": "1",
+															"tierName": "Tier 1",
+															"tierDesc": "PennCare",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": false
+														},
+														{
+															"tierNum": 2,
+															"tier": "2",
+															"tierName": "Tier 2",
+															"tierDesc": "Personal Choice PPO",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": true
+														}
+													]
+												}
+											],
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										}
+									],
+									"subCategories": []
+								},
+								{
+									"type": "category",
+									"name": "To find providers for Grandview",
+									"pcpEligible": false,
+									"plans": [
+										{
+											"type": "plan",
+											"name": "Grand View Health",
+											"productCode": "5330",
+											"networkTierList": [
+												{
+													"categoryName": "Medical",
+													"tierValue": 3,
+													"clientTierConfgrs": [
+														{
+															"tierNum": 1,
+															"tier": "1",
+															"tierName": "Tier 1",
+															"tierDesc": "GVH Home Host",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": false
+														},
+														{
+															"tierNum": 2,
+															"tier": "2",
+															"tierName": "Tier 2",
+															"tierDesc": "GVH Preferred",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": false
+														},
+														{
+															"tierNum": 3,
+															"tier": "3",
+															"tierName": "Tier 3",
+															"tierDesc": "IBC Preferred - Personal Choice PPO",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": true
+														}
+													]
+												}
+											],
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										}
+									],
+									"subCategories": []
+								},
+								{
+									"type": "category",
+									"name": "To find providers for Drexel",
+									"pcpEligible": false,
+									"plans": [
+										{
+											"type": "plan",
+											"name": "Drexel Preferred POS",
+											"productCode": "2205",
+											"networkTierList": [
+												{
+													"categoryName": "Medical",
+													"tierValue": 2,
+													"clientTierConfgrs": [
+														{
+															"tierNum": 1,
+															"tier": "1",
+															"tierName": "Tier 1",
+															"tierDesc": "Drexel Preferred Providers",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": false
+														},
+														{
+															"tierNum": 2,
+															"tier": "2",
+															"tierName": "Tier 2",
+															"tierDesc": "Keystone POS",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": true
+														}
+													]
+												}
+											],
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										},
+										{
+											"type": "plan",
+											"name": "Drexel Preferred PPO",
+											"productCode": "2206",
+											"networkTierList": [
+												{
+													"categoryName": "Medical",
+													"tierValue": 2,
+													"clientTierConfgrs": [
+														{
+															"tierNum": 1,
+															"tier": "1",
+															"tierName": "Tier 1",
+															"tierDesc": "Drexel Preferred Providers",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": false
+														},
+														{
+															"tierNum": 2,
+															"tier": "2",
+															"tierName": "Tier 2",
+															"tierDesc": "Personal Choice PPO",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": true
+														}
+													]
+												}
+											],
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										}
+									],
+									"subCategories": []
+								},
+								{
+									"type": "category",
+									"name": "To find providers for Temple University Health System",
+									"pcpEligible": false,
+									"plans": [
+										{
+											"type": "plan",
+											"name": "Temple Care Plan/Advantage Plan",
+											"productCode": "447",
+											"networkTierList": [
+												{
+													"categoryName": "Medical",
+													"tierValue": 2,
+													"clientTierConfgrs": [
+														{
+															"tierNum": 1,
+															"tier": "1",
+															"tierName": "Tier 1",
+															"tierDesc": "Temple Care Network",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": false
+														},
+														{
+															"tierNum": 2,
+															"tier": "2",
+															"tierName": "Tier 2",
+															"tierDesc": "Personal Choice PPO",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": true
+														}
+													]
+												}
+											],
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										},
+										{
+											"type": "plan",
+											"name": "Personal Choice PPO",
+											"productCode": "360",
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										}
+									],
+									"subCategories": []
+								},
+								{
+									"type": "category",
+									"name": "To find providers for 1199C",
+									"pcpEligible": false,
+									"plans": [
+										{
+											"type": "plan",
+											"name": "1199C Keystone HMO/POS",
+											"productCode": "2214",
+											"networkTierList": [
+												{
+													"categoryName": "Medical",
+													"tierValue": 2,
+													"clientTierConfgrs": [
+														{
+															"tierNum": 1,
+															"tier": "1",
+															"tierName": "Tier 1",
+															"tierDesc": "1199C Preferred Providers",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": false
+														},
+														{
+															"tierNum": 2,
+															"tier": "2",
+															"tierName": "Tier 2",
+															"tierDesc": "Keystone HMO/POS",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": true
+														}
+													]
+												}
+											],
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										}
+									],
+									"subCategories": []
+								},
+								{
+									"type": "category",
+									"name": "To find providers for CHOP",
+									"pcpEligible": false,
+									"plans": [
+										{
+											"type": "plan",
+											"name": "CHOP Preferred Care Plan/CDHP",
+											"productCode": "2210",
+											"networkTierList": [
+												{
+													"categoryName": "Medical",
+													"tierValue": 2,
+													"clientTierConfgrs": [
+														{
+															"tierNum": 1,
+															"tier": "1",
+															"tierName": "Tier 1",
+															"tierDesc": "CHOP Pediatrics",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": false
+														},
+														{
+															"tierNum": 2,
+															"tier": "2",
+															"tierName": "Tier 2",
+															"tierDesc": "In-Network",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": true
+														}
+													]
+												}
+											],
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										}
+									],
+									"subCategories": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"key": "CONTACT",
+					"name": "CONTACT",
+					"value": [
+						{
+							"type": "phone",
+							"label": "Main",
+							"values": [
+								{
+									"display": "(484) 526-2034",
+									"url": null
+								}
+							]
+						},
+						{
+							"type": "email",
+							"label": "Email",
+							"values": [
+								{
+									"display": "None",
+									"url": ""
+								}
+							]
+						},
+						{
+							"type": "url",
+							"label": "Web contact",
+							"values": [
+								{
+									"display": "None",
+									"url": ""
+								}
+							]
+						},
+						{
+							"type": "fax",
+							"label": "Physical Fax",
+							"values": [
+								{
+									"display": "(484) 526-3648",
+									"url": null
+								}
+							]
+						}
+					]
+				},
+				{
+					"key": "LOCATION_SERVICES",
+					"name": "LOCATION SERVICES",
+					"value": []
+				},
+				{
+					"key": "CLIENT_LOCATION_ID",
+					"name": "Provider ID",
+					"value": ""
+				},
+				{
+					"key": "STAFF_LANGUAGES",
+					"name": "STAFF LANGUAGES",
+					"value": [
+						"English"
+					]
+				},
+				{
+					"key": "REMOTE_SERVICES",
+					"name": "REMOTE SERVICES",
+					"value": []
+				},
+				{
+					"key": "CCA_GROUP_KEY_FACSERV",
+					"name": "Office Services",
+					"value": []
+				},
+				{
+					"key": "CCA_GROUP_KEY_ETH",
+					"name": "Ethnicity",
+					"value": []
+				},
+				{
+					"key": "CCA_GROUP_KEY_RACE",
+					"name": "Race",
+					"value": []
+				}
+			],
+			"singleAttributes": [],
+			"elevatedAttributes": [
+				{
+					"labelKey": "elevated.anp.acceptingAll",
+					"style": "success",
+					"messages": []
+				}
+			]
+		},
+		{
+			"name": "St. Luke's Palliative Care Group",
+			"address": {
+				"line1": "1021 Park Avenue",
+				"line2": "Suite 200",
+				"city": "Quakertown",
+				"state": "PA",
+				"country": "US",
+				"zip": "18951",
+				"county": "Bucks"
+			},
+			"phone": "(484) 526-3648",
+			"distance": 15.5,
+			"providerLocationKey": "7674538101538364-3701879461330129",
+			"id": 3701879461330129,
+			"latitude": 40.45231,
+			"longitude": -75.36863,
+			"pcp": {
+				"eligible": false,
+				"selectable": false
+			},
+			"primaryLocation": false,
+			"messages": [],
+			"rewardable": false,
+			"attributes": [
+				{
+					"key": "SPECIALTY",
+					"name": "SPECIALTIES",
+					"value": [
+						"Hospice & Palliative Medicine",
+						"Internal Medicine"
+					]
+				},
+				{
+					"key": "OFFICE_HOURS",
+					"name": "OFFICE HOURS",
+					"value": {
+						"monHourFrom": 800,
+						"monHourTo": 1700,
+						"tueHourFrom": 0,
+						"tueHourTo": 0,
+						"wedHourFrom": 0,
+						"wedHourTo": 0,
+						"thuHourFrom": 0,
+						"thuHourTo": 0,
+						"friHourFrom": 0,
+						"friHourTo": 0,
+						"satHourFrom": 0,
+						"satHourTo": 0,
+						"sunHourFrom": 0,
+						"sunHourTo": 0,
+						"isExtended": false
+					}
+				},
+				{
+					"key": "AREA_OF_FOCUS",
+					"name": "AREAS OF FOCUS",
+					"value": []
+				},
+				{
+					"key": "QUALITY",
+					"name": "QUALITY",
+					"value": {
+						"recognitionGroups": [],
+						"hasQuality": false
+					}
+				},
+				{
+					"key": "CCA_GROUP_KEY_NPI",
+					"name": "NPI",
+					"value": [
+						"1124266630"
+					]
+				},
+				{
+					"key": "PLANS_ACCEPTED",
+					"name": "PLANS ACCEPTED",
+					"value": [
+						{
+							"type": "category",
+							"name": "Medical",
+							"pcpEligible": false,
+							"plans": [],
+							"subCategories": [
+								{
+									"type": "category",
+									"name": "To find National providers",
+									"pcpEligible": false,
+									"plans": [
+										{
+											"type": "plan",
+											"name": "National BlueCard PPO",
+											"productCode": "813",
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										}
+									],
+									"subCategories": []
+								},
+								{
+									"type": "category",
+									"name": "To find providers for Keystone and Personal Choice plans",
+									"pcpEligible": false,
+									"plans": [
+										{
+											"type": "plan",
+											"name": "Keystone HMO Proactive",
+											"productCode": "470",
+											"networkTierList": [
+												{
+													"categoryName": "Medical",
+													"tierValue": 1,
+													"clientTierConfgrs": [
+														{
+															"tierNum": 1,
+															"tier": "1",
+															"tierName": "Tier 1 - Preferred",
+															"tierDesc": " ",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": true
+														},
+														{
+															"tierNum": 2,
+															"tier": "2",
+															"tierName": "Tier 2 - Enhanced",
+															"tierDesc": " ",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": false
+														},
+														{
+															"tierNum": 3,
+															"tier": "3",
+															"tierName": "Tier 3 - Standard",
+															"tierDesc": " ",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": false
+														}
+													]
+												}
+											],
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										},
+										{
+											"type": "plan",
+											"name": "Keystone HMO CHIP",
+											"productCode": "1094",
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										},
+										{
+											"type": "plan",
+											"name": "Personal Choice PPO",
+											"productCode": "360",
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										},
+										{
+											"type": "plan",
+											"name": "Keystone HMO/POS/Direct POS",
+											"productCode": "460",
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										},
+										{
+											"type": "plan",
+											"name": "Personal Choice EPO",
+											"productCode": "448",
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										}
+									],
+									"subCategories": []
+								},
+								{
+									"type": "category",
+									"name": "To find Blue High Performance providers",
+									"pcpEligible": false,
+									"plans": [
+										{
+											"type": "plan",
+											"name": "Blue High Performance",
+											"productCode": "2204",
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										}
+									],
+									"subCategories": []
+								}
+							]
+						},
+						{
+							"type": "category",
+							"name": "Company Specific Networks",
+							"pcpEligible": false,
+							"plans": [],
+							"subCategories": [
+								{
+									"type": "category",
+									"name": "To find National providers",
+									"pcpEligible": false,
+									"plans": [
+										{
+											"type": "plan",
+											"name": "National BlueCard PPO",
+											"productCode": "813",
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										}
+									],
+									"subCategories": []
+								},
+								{
+									"type": "category",
+									"name": "To find Medical providers for PennCare Network",
+									"pcpEligible": false,
+									"plans": [
+										{
+											"type": "plan",
+											"name": "PennCare Network",
+											"productCode": "446",
+											"networkTierList": [
+												{
+													"categoryName": "Medical",
+													"tierValue": 2,
+													"clientTierConfgrs": [
+														{
+															"tierNum": 1,
+															"tier": "1",
+															"tierName": "Tier 1",
+															"tierDesc": "PennCare",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": false
+														},
+														{
+															"tierNum": 2,
+															"tier": "2",
+															"tierName": "Tier 2",
+															"tierDesc": "Personal Choice PPO",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": true
+														}
+													]
+												}
+											],
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										}
+									],
+									"subCategories": []
+								},
+								{
+									"type": "category",
+									"name": "To find providers for Grandview",
+									"pcpEligible": false,
+									"plans": [
+										{
+											"type": "plan",
+											"name": "Grand View Health",
+											"productCode": "5330",
+											"networkTierList": [
+												{
+													"categoryName": "Medical",
+													"tierValue": 3,
+													"clientTierConfgrs": [
+														{
+															"tierNum": 1,
+															"tier": "1",
+															"tierName": "Tier 1",
+															"tierDesc": "GVH Home Host",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": false
+														},
+														{
+															"tierNum": 2,
+															"tier": "2",
+															"tierName": "Tier 2",
+															"tierDesc": "GVH Preferred",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": false
+														},
+														{
+															"tierNum": 3,
+															"tier": "3",
+															"tierName": "Tier 3",
+															"tierDesc": "IBC Preferred - Personal Choice PPO",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": true
+														}
+													]
+												}
+											],
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										}
+									],
+									"subCategories": []
+								},
+								{
+									"type": "category",
+									"name": "To find providers for Drexel",
+									"pcpEligible": false,
+									"plans": [
+										{
+											"type": "plan",
+											"name": "Drexel Preferred POS",
+											"productCode": "2205",
+											"networkTierList": [
+												{
+													"categoryName": "Medical",
+													"tierValue": 2,
+													"clientTierConfgrs": [
+														{
+															"tierNum": 1,
+															"tier": "1",
+															"tierName": "Tier 1",
+															"tierDesc": "Drexel Preferred Providers",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": false
+														},
+														{
+															"tierNum": 2,
+															"tier": "2",
+															"tierName": "Tier 2",
+															"tierDesc": "Keystone POS",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": true
+														}
+													]
+												}
+											],
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										},
+										{
+											"type": "plan",
+											"name": "Drexel Preferred PPO",
+											"productCode": "2206",
+											"networkTierList": [
+												{
+													"categoryName": "Medical",
+													"tierValue": 2,
+													"clientTierConfgrs": [
+														{
+															"tierNum": 1,
+															"tier": "1",
+															"tierName": "Tier 1",
+															"tierDesc": "Drexel Preferred Providers",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": false
+														},
+														{
+															"tierNum": 2,
+															"tier": "2",
+															"tierName": "Tier 2",
+															"tierDesc": "Personal Choice PPO",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": true
+														}
+													]
+												}
+											],
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										}
+									],
+									"subCategories": []
+								},
+								{
+									"type": "category",
+									"name": "To find providers for Temple University Health System",
+									"pcpEligible": false,
+									"plans": [
+										{
+											"type": "plan",
+											"name": "Temple Care Plan/Advantage Plan",
+											"productCode": "447",
+											"networkTierList": [
+												{
+													"categoryName": "Medical",
+													"tierValue": 2,
+													"clientTierConfgrs": [
+														{
+															"tierNum": 1,
+															"tier": "1",
+															"tierName": "Tier 1",
+															"tierDesc": "Temple Care Network",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": false
+														},
+														{
+															"tierNum": 2,
+															"tier": "2",
+															"tierName": "Tier 2",
+															"tierDesc": "Personal Choice PPO",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": true
+														}
+													]
+												}
+											],
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										},
+										{
+											"type": "plan",
+											"name": "Personal Choice PPO",
+											"productCode": "360",
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										}
+									],
+									"subCategories": []
+								},
+								{
+									"type": "category",
+									"name": "To find providers for 1199C",
+									"pcpEligible": false,
+									"plans": [
+										{
+											"type": "plan",
+											"name": "1199C Keystone HMO/POS",
+											"productCode": "2214",
+											"networkTierList": [
+												{
+													"categoryName": "Medical",
+													"tierValue": 2,
+													"clientTierConfgrs": [
+														{
+															"tierNum": 1,
+															"tier": "1",
+															"tierName": "Tier 1",
+															"tierDesc": "1199C Preferred Providers",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": false
+														},
+														{
+															"tierNum": 2,
+															"tier": "2",
+															"tierName": "Tier 2",
+															"tierDesc": "Keystone HMO/POS",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": true
+														}
+													]
+												}
+											],
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										}
+									],
+									"subCategories": []
+								},
+								{
+									"type": "category",
+									"name": "To find providers for CHOP",
+									"pcpEligible": false,
+									"plans": [
+										{
+											"type": "plan",
+											"name": "CHOP Preferred Care Plan/CDHP",
+											"productCode": "2210",
+											"networkTierList": [
+												{
+													"categoryName": "Medical",
+													"tierValue": 2,
+													"clientTierConfgrs": [
+														{
+															"tierNum": 1,
+															"tier": "1",
+															"tierName": "Tier 1",
+															"tierDesc": "CHOP Pediatrics",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": false
+														},
+														{
+															"tierNum": 2,
+															"tier": "2",
+															"tierName": "Tier 2",
+															"tierDesc": "In-Network",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": true
+														}
+													]
+												}
+											],
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										}
+									],
+									"subCategories": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"key": "CONTACT",
+					"name": "CONTACT",
+					"value": [
+						{
+							"type": "phone",
+							"label": "Main",
+							"values": [
+								{
+									"display": "(484) 526-3648",
+									"url": null
+								}
+							]
+						},
+						{
+							"type": "email",
+							"label": "Email",
+							"values": [
+								{
+									"display": "None",
+									"url": ""
+								}
+							]
+						},
+						{
+							"type": "url",
+							"label": "Web contact",
+							"values": [
+								{
+									"display": "None",
+									"url": ""
+								}
+							]
+						},
+						{
+							"type": "fax",
+							"label": "Physical Fax",
+							"values": [
+								{
+									"display": "(484) 526-2034",
+									"url": null
+								}
+							]
+						}
+					]
+				},
+				{
+					"key": "LOCATION_SERVICES",
+					"name": "LOCATION SERVICES",
+					"value": [
+						"Wheelchair accessible"
+					]
+				},
+				{
+					"key": "CLIENT_LOCATION_ID",
+					"name": "Provider ID",
+					"value": ""
+				},
+				{
+					"key": "STAFF_LANGUAGES",
+					"name": "STAFF LANGUAGES",
+					"value": [
+						"English"
+					]
+				},
+				{
+					"key": "REMOTE_SERVICES",
+					"name": "REMOTE SERVICES",
+					"value": []
+				},
+				{
+					"key": "CCA_GROUP_KEY_FACSERV",
+					"name": "Office Services",
+					"value": []
+				},
+				{
+					"key": "CCA_GROUP_KEY_ETH",
+					"name": "Ethnicity",
+					"value": []
+				},
+				{
+					"key": "CCA_GROUP_KEY_RACE",
+					"name": "Race",
+					"value": []
+				}
+			],
+			"singleAttributes": [],
+			"elevatedAttributes": [
+				{
+					"labelKey": "elevated.anp.acceptingAll",
+					"style": "success",
+					"messages": []
+				}
+			]
+		},
+		{
+			"name": "St. Luke's Palliative Care Group",
+			"address": {
+				"line1": "3000 St. Luke's Dr",
+				"city": "Quakertown",
+				"state": "PA",
+				"country": "US",
+				"zip": "18951",
+				"county": "Bucks"
+			},
+			"phone": "(484) 526-3648",
+			"distance": 17.1,
+			"providerLocationKey": "7674538101538364-7882421764050506",
+			"id": 7882421764050506,
+			"latitude": 40.440945,
+			"longitude": -75.339,
+			"pcp": {
+				"eligible": false,
+				"selectable": false
+			},
+			"primaryLocation": false,
+			"messages": [],
+			"rewardable": false,
+			"attributes": [
+				{
+					"key": "SPECIALTY",
+					"name": "SPECIALTIES",
+					"value": [
+						"Hospice & Palliative Medicine"
+					]
+				},
+				{
+					"key": "OFFICE_HOURS",
+					"name": "OFFICE HOURS",
+					"value": {
+						"monHourFrom": 800,
+						"monHourTo": 1700,
+						"tueHourFrom": 0,
+						"tueHourTo": 0,
+						"wedHourFrom": 0,
+						"wedHourTo": 0,
+						"thuHourFrom": 0,
+						"thuHourTo": 0,
+						"friHourFrom": 0,
+						"friHourTo": 0,
+						"satHourFrom": 0,
+						"satHourTo": 0,
+						"sunHourFrom": 0,
+						"sunHourTo": 0,
+						"isExtended": false
+					}
+				},
+				{
+					"key": "AREA_OF_FOCUS",
+					"name": "AREAS OF FOCUS",
+					"value": []
+				},
+				{
+					"key": "QUALITY",
+					"name": "QUALITY",
+					"value": {
+						"recognitionGroups": [],
+						"hasQuality": false
+					}
+				},
+				{
+					"key": "CCA_GROUP_KEY_NPI",
+					"name": "NPI",
+					"value": [
+						"1124266630"
+					]
+				},
+				{
+					"key": "PLANS_ACCEPTED",
+					"name": "PLANS ACCEPTED",
+					"value": [
+						{
+							"type": "category",
+							"name": "Medical",
+							"pcpEligible": false,
+							"plans": [],
+							"subCategories": [
+								{
+									"type": "category",
+									"name": "To find National providers",
+									"pcpEligible": false,
+									"plans": [
+										{
+											"type": "plan",
+											"name": "National BlueCard PPO",
+											"productCode": "813",
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										}
+									],
+									"subCategories": []
+								},
+								{
+									"type": "category",
+									"name": "To find providers for Keystone and Personal Choice plans",
+									"pcpEligible": false,
+									"plans": [
+										{
+											"type": "plan",
+											"name": "Keystone HMO Proactive",
+											"productCode": "470",
+											"networkTierList": [
+												{
+													"categoryName": "Medical",
+													"tierValue": 1,
+													"clientTierConfgrs": [
+														{
+															"tierNum": 1,
+															"tier": "1",
+															"tierName": "Tier 1 - Preferred",
+															"tierDesc": " ",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": true
+														},
+														{
+															"tierNum": 2,
+															"tier": "2",
+															"tierName": "Tier 2 - Enhanced",
+															"tierDesc": " ",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": false
+														},
+														{
+															"tierNum": 3,
+															"tier": "3",
+															"tierName": "Tier 3 - Standard",
+															"tierDesc": " ",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": false
+														}
+													]
+												}
+											],
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										},
+										{
+											"type": "plan",
+											"name": "Personal Choice PPO",
+											"productCode": "360",
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										},
+										{
+											"type": "plan",
+											"name": "Keystone HMO/POS/Direct POS",
+											"productCode": "460",
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										},
+										{
+											"type": "plan",
+											"name": "Personal Choice EPO",
+											"productCode": "448",
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										}
+									],
+									"subCategories": []
+								},
+								{
+									"type": "category",
+									"name": "To find Blue High Performance providers",
+									"pcpEligible": false,
+									"plans": [
+										{
+											"type": "plan",
+											"name": "Blue High Performance",
+											"productCode": "2204",
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										}
+									],
+									"subCategories": []
+								}
+							]
+						},
+						{
+							"type": "category",
+							"name": "Company Specific Networks",
+							"pcpEligible": false,
+							"plans": [],
+							"subCategories": [
+								{
+									"type": "category",
+									"name": "To find National providers",
+									"pcpEligible": false,
+									"plans": [
+										{
+											"type": "plan",
+											"name": "National BlueCard PPO",
+											"productCode": "813",
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										}
+									],
+									"subCategories": []
+								},
+								{
+									"type": "category",
+									"name": "To find Medical providers for PennCare Network",
+									"pcpEligible": false,
+									"plans": [
+										{
+											"type": "plan",
+											"name": "PennCare Network",
+											"productCode": "446",
+											"networkTierList": [
+												{
+													"categoryName": "Medical",
+													"tierValue": 2,
+													"clientTierConfgrs": [
+														{
+															"tierNum": 1,
+															"tier": "1",
+															"tierName": "Tier 1",
+															"tierDesc": "PennCare",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": false
+														},
+														{
+															"tierNum": 2,
+															"tier": "2",
+															"tierName": "Tier 2",
+															"tierDesc": "Personal Choice PPO",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": true
+														}
+													]
+												}
+											],
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										}
+									],
+									"subCategories": []
+								},
+								{
+									"type": "category",
+									"name": "To find providers for Grandview",
+									"pcpEligible": false,
+									"plans": [
+										{
+											"type": "plan",
+											"name": "Grand View Health",
+											"productCode": "5330",
+											"networkTierList": [
+												{
+													"categoryName": "Medical",
+													"tierValue": 3,
+													"clientTierConfgrs": [
+														{
+															"tierNum": 1,
+															"tier": "1",
+															"tierName": "Tier 1",
+															"tierDesc": "GVH Home Host",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": false
+														},
+														{
+															"tierNum": 2,
+															"tier": "2",
+															"tierName": "Tier 2",
+															"tierDesc": "GVH Preferred",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": false
+														},
+														{
+															"tierNum": 3,
+															"tier": "3",
+															"tierName": "Tier 3",
+															"tierDesc": "IBC Preferred - Personal Choice PPO",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": true
+														}
+													]
+												}
+											],
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										}
+									],
+									"subCategories": []
+								},
+								{
+									"type": "category",
+									"name": "To find providers for Drexel",
+									"pcpEligible": false,
+									"plans": [
+										{
+											"type": "plan",
+											"name": "Drexel Preferred POS",
+											"productCode": "2205",
+											"networkTierList": [
+												{
+													"categoryName": "Medical",
+													"tierValue": 2,
+													"clientTierConfgrs": [
+														{
+															"tierNum": 1,
+															"tier": "1",
+															"tierName": "Tier 1",
+															"tierDesc": "Drexel Preferred Providers",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": false
+														},
+														{
+															"tierNum": 2,
+															"tier": "2",
+															"tierName": "Tier 2",
+															"tierDesc": "Keystone POS",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": true
+														}
+													]
+												}
+											],
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										},
+										{
+											"type": "plan",
+											"name": "Drexel Preferred PPO",
+											"productCode": "2206",
+											"networkTierList": [
+												{
+													"categoryName": "Medical",
+													"tierValue": 2,
+													"clientTierConfgrs": [
+														{
+															"tierNum": 1,
+															"tier": "1",
+															"tierName": "Tier 1",
+															"tierDesc": "Drexel Preferred Providers",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": false
+														},
+														{
+															"tierNum": 2,
+															"tier": "2",
+															"tierName": "Tier 2",
+															"tierDesc": "Personal Choice PPO",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": true
+														}
+													]
+												}
+											],
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										}
+									],
+									"subCategories": []
+								},
+								{
+									"type": "category",
+									"name": "To find providers for Temple University Health System",
+									"pcpEligible": false,
+									"plans": [
+										{
+											"type": "plan",
+											"name": "Temple Care Plan/Advantage Plan",
+											"productCode": "447",
+											"networkTierList": [
+												{
+													"categoryName": "Medical",
+													"tierValue": 2,
+													"clientTierConfgrs": [
+														{
+															"tierNum": 1,
+															"tier": "1",
+															"tierName": "Tier 1",
+															"tierDesc": "Temple Care Network",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": false
+														},
+														{
+															"tierNum": 2,
+															"tier": "2",
+															"tierName": "Tier 2",
+															"tierDesc": "Personal Choice PPO",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": true
+														}
+													]
+												}
+											],
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										},
+										{
+											"type": "plan",
+											"name": "Personal Choice PPO",
+											"productCode": "360",
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										}
+									],
+									"subCategories": []
+								},
+								{
+									"type": "category",
+									"name": "To find providers for 1199C",
+									"pcpEligible": false,
+									"plans": [
+										{
+											"type": "plan",
+											"name": "1199C Keystone HMO/POS",
+											"productCode": "2214",
+											"networkTierList": [
+												{
+													"categoryName": "Medical",
+													"tierValue": 2,
+													"clientTierConfgrs": [
+														{
+															"tierNum": 1,
+															"tier": "1",
+															"tierName": "Tier 1",
+															"tierDesc": "1199C Preferred Providers",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": false
+														},
+														{
+															"tierNum": 2,
+															"tier": "2",
+															"tierName": "Tier 2",
+															"tierDesc": "Keystone HMO/POS",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": true
+														}
+													]
+												}
+											],
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										}
+									],
+									"subCategories": []
+								},
+								{
+									"type": "category",
+									"name": "To find providers for CHOP",
+									"pcpEligible": false,
+									"plans": [
+										{
+											"type": "plan",
+											"name": "CHOP Preferred Care Plan/CDHP",
+											"productCode": "2210",
+											"networkTierList": [
+												{
+													"categoryName": "Medical",
+													"tierValue": 2,
+													"clientTierConfgrs": [
+														{
+															"tierNum": 1,
+															"tier": "1",
+															"tierName": "Tier 1",
+															"tierDesc": "CHOP Pediatrics",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": false
+														},
+														{
+															"tierNum": 2,
+															"tier": "2",
+															"tierName": "Tier 2",
+															"tierDesc": "In-Network",
+															"link": null,
+															"tierIcon": "",
+															"isSelected": true
+														}
+													]
+												}
+											],
+											"pcpEligible": false,
+											"acceptingPatients": {
+												"labelKey": "elevated.anp.acceptingAll",
+												"style": "success",
+												"messages": []
+											},
+											"effectiveDates": {},
+											"plans": [],
+											"subCategories": []
+										}
+									],
+									"subCategories": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"key": "CONTACT",
+					"name": "CONTACT",
+					"value": [
+						{
+							"type": "phone",
+							"label": "Main",
+							"values": [
+								{
+									"display": "(484) 526-3648",
+									"url": null
+								}
+							]
+						},
+						{
+							"type": "email",
+							"label": "Email",
+							"values": [
+								{
+									"display": "None",
+									"url": ""
+								}
+							]
+						},
+						{
+							"type": "url",
+							"label": "Web contact",
+							"values": [
+								{
+									"display": "None",
+									"url": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"key": "LOCATION_SERVICES",
+					"name": "LOCATION SERVICES",
+					"value": []
+				},
+				{
+					"key": "CLIENT_LOCATION_ID",
+					"name": "Provider ID",
+					"value": ""
+				},
+				{
+					"key": "STAFF_LANGUAGES",
+					"name": "STAFF LANGUAGES",
+					"value": [
+						"English"
+					]
+				},
+				{
+					"key": "REMOTE_SERVICES",
+					"name": "REMOTE SERVICES",
+					"value": []
+				},
+				{
+					"key": "CCA_GROUP_KEY_FACSERV",
+					"name": "Office Services",
+					"value": []
+				},
+				{
+					"key": "CCA_GROUP_KEY_ETH",
+					"name": "Ethnicity",
+					"value": []
+				},
+				{
+					"key": "CCA_GROUP_KEY_RACE",
+					"name": "Race",
+					"value": []
+				}
+			],
+			"singleAttributes": [],
+			"elevatedAttributes": [
+				{
+					"labelKey": "elevated.anp.acceptingAll",
+					"style": "success",
+					"messages": []
+				}
+			]
+		}
+	],
+	"profileMessages": [],
+	"tierDetails": {},
+	"dataBuild": {
+		"etlId": "prep_20230617_063004-20230619t054226z",
+		"indexId": "prep_20230617_063004-20230619t054226z-20230619080221"
+	},
+	"searchRequestKey": "59ed248e-9073-4d57-b0c8-10b96d1cee5d"
+}

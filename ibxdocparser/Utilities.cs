@@ -16,7 +16,7 @@ namespace ibxdocparser
             try
             {
                 // Wait a little between requests to avoid suspicion.
-                Thread.Sleep(250);
+                Thread.Sleep(50);
                 HttpResponseMessage response = await client.GetAsync(url);
                 response.EnsureSuccessStatusCode();
                 string html = await response.Content.ReadAsStringAsync();

@@ -3,9 +3,14 @@ using System.Diagnostics;
 
 namespace ibxdocparser
 {
-    internal sealed class IbxProfileExcelSaver : IDisposable
+    internal sealed class IbxProfileExcelSaver : IProfileSaver<IbxProfile>, IDisposable
     {
-        private readonly ExcelProfileSaver<IbxProfile> _saver = new("IBX Profile");
+        private readonly ExcelProfileSaver<IbxProfile> _saver = new()
+        {
+            ProfileWorksheetName = "IBX Profiles"
+        };
+
+        public string FilePath { get; set; } = "IbxProfiles.xlsx";
 
         public IbxProfileExcelSaver()
         {
@@ -18,10 +23,10 @@ namespace ibxdocparser
                 ("Full Name",  (x) => x.FullName ?? ""),
                 ("Gender",  (x) => x.Gender ?? ""),
                 ("Board Certified",  (x) => x.BoardCertified ?? ""),
-                ("Education",  (x) => x.Education ?? ""),
-                ("Residency",  (x) => x.Residency ?? ""),
-                ("Group Affiliations",  (x) => string.Join("\r\n\r\n", x.GroupAffiliations ?? Array.Empty<string>())),
-                ("Hospital Affiliations",  (x) => string.Join("\r\n\r\n", x.HospitalAffiliations)),
+                ("Education",  (x) => string.Join("\r\n", x.Education.Select(e=>e.ToString()))),
+                ("Residency",  (x) => string.Join("\r\n", x.Residencies.Select(e=>e.ToString()))),
+                ("Group Affiliations",  (x) => string.Join("\r\n", x.GroupAffiliations.Select(e=>e.ToString()))),
+                ("Hospital Affiliations",  (x) => string.Join("\r\n", x.HospitalAffiliations.Select(e=>e.ToString()))),
                 ("Locations",  (x) => string.Join("\r\n\r\n", x.Locations.Select(l => l.ToString()))),
                 // This will be replaced later by adding the image to the sheet
                 ("Image", (x) => "")
@@ -31,14 +36,25 @@ namespace ibxdocparser
 
 
 
+        public void Dispose()
+        {
+            _saver.Dispose();
+        }
+
+        public Task StartSessionAsync(string label, Uri? source)
+        {
+            _saver.ProfileWorksheetName = label;
+            return Task.CompletedTask;
+        }
+
+
         /// <summary>
         /// Appends the details for a profile to a new line in the spreadsheet.
         /// </summary>
         /// <param name="profile"></param>
         /// <returns></returns>
-        public async Task WriteProfileAsync(IbxProfile profile)
+        public async Task AddProfileAsync(IbxProfile profile)
         {
-
             int row = _saver.AddProfile(profile);
 
             // Download the image and add it to the spreadsheet if it exists.
@@ -57,15 +73,14 @@ namespace ibxdocparser
             }
         }
 
-
-        public void Save(string path)
+        public Task SaveAsync()
         {
-            _saver.Save(path);
-        }
-
-        public void Dispose()
-        {
-            _saver.Dispose();
+            if (FilePath.Length == 0)
+            {
+                throw new InvalidOperationException("File name not set.");
+            }
+            _saver.Save(FilePath);
+            return Task.CompletedTask;
         }
     }
 

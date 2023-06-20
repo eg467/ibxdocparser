@@ -33,8 +33,10 @@ namespace ibxdocparser
         {
             List<LvhnProfile> results = new();
             List<LvhnDocSummary> summaries = await ParseDocSummariesAsync(listingUrl);
+            int i = 0;
             foreach (var summary in summaries)
             {
+                Debug.WriteLine($"Downloading {summary.Name} ({++i}/{summaries.Count})");
                 LvhnDocDetails? details = null;
                 string? error = null;
                 try
@@ -44,8 +46,9 @@ namespace ibxdocparser
                 catch (Exception ex)
                 {
                     Debug.WriteLine($"Error parsing details at ({summary.DetailsUri}) ({ex})");
-                    throw;
                     error = ex.Message;
+                    throw;
+
                 }
                 var result = new LvhnProfile(summary, details, error);
                 results.Add(result);
@@ -117,7 +120,7 @@ namespace ibxdocparser
         Uri DetailsUri,
         string[] Specialties,
         string[] AreasOfFocus,
-        Location? Location,
+        Location[] Locations,
         Uri? ImageUri,
         bool AcceptingNewPatients);
 

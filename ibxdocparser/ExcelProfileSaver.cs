@@ -7,18 +7,28 @@ namespace ibxdocparser
     internal class ExcelProfileSaver<TProfile> : IDisposable
     {
         private readonly XLWorkbook _workbook;
-        private readonly string _profileWorksheetName;
+
+
+        private string _profileWorksheetName = "Profiles";
+        public string ProfileWorksheetName
+        {
+            get => _profileWorksheetName;
+            set
+            {
+                _profileWorksheetName = string.IsNullOrEmpty(value) ? "Profiles" : value;
+                _profileWorksheet.Name = _profileWorksheetName;
+            }
+        }
         private IXLWorksheet _profileWorksheet => _workbook.Worksheets.First();
         private readonly string _imageDir;
-        private (string Label, Func<TProfile, XLCellValue> ValueSelector)[] _fields = 
+        private (string Label, Func<TProfile, XLCellValue> ValueSelector)[] _fields =
             Array.Empty<(string Label, Func<TProfile, XLCellValue> ValueSelector)>();
 
-        public ExcelProfileSaver(string worksheetName)
+        public ExcelProfileSaver()
         {
             _imageDir = CreateImageDirectory();
-            _profileWorksheetName = worksheetName;
             _workbook = new XLWorkbook();
-            _workbook.Worksheets.Add(_profileWorksheetName);
+            _workbook.Worksheets.Add(ProfileWorksheetName);
         }
 
         public static string CreateImageDirectory()
