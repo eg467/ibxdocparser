@@ -38,8 +38,8 @@
             btnCopyUrl = new Button();
             btnTest = new Button();
             btnParseLvhn = new Button();
-            saveExcelFileDialog = new SaveFileDialog();
             btnClearDatabase = new Button();
+            saveExcelFileDialog = new SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)webView).BeginInit();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
@@ -50,19 +50,17 @@
             webView.CreationProperties = null;
             webView.DefaultBackgroundColor = Color.White;
             webView.Dock = DockStyle.Fill;
-            webView.Location = new Point(0, 49);
-            webView.Margin = new Padding(2);
+            webView.Location = new Point(0, 82);
             webView.Name = "webView";
-            webView.Size = new Size(972, 664);
+            webView.Size = new Size(1389, 1106);
             webView.TabIndex = 0;
             webView.ZoomFactor = 1D;
             // 
             // btnNavigateHome
             // 
-            btnNavigateHome.Location = new Point(2, 2);
-            btnNavigateHome.Margin = new Padding(2);
+            btnNavigateHome.Location = new Point(3, 3);
             btnNavigateHome.Name = "btnNavigateHome";
-            btnNavigateHome.Size = new Size(132, 32);
+            btnNavigateHome.Size = new Size(189, 53);
             btnNavigateHome.TabIndex = 1;
             btnNavigateHome.Text = "Go Home";
             btnNavigateHome.UseVisualStyleBackColor = true;
@@ -70,10 +68,9 @@
             // 
             // btnParseListings
             // 
-            btnParseListings.Location = new Point(138, 2);
-            btnParseListings.Margin = new Padding(2);
+            btnParseListings.Location = new Point(198, 3);
             btnParseListings.Name = "btnParseListings";
-            btnParseListings.Size = new Size(132, 32);
+            btnParseListings.Size = new Size(189, 53);
             btnParseListings.TabIndex = 1;
             btnParseListings.Text = "Parse Listings";
             btnParseListings.UseVisualStyleBackColor = true;
@@ -89,17 +86,15 @@
             flowLayoutPanel1.Controls.Add(btnClearDatabase);
             flowLayoutPanel1.Dock = DockStyle.Top;
             flowLayoutPanel1.Location = new Point(0, 0);
-            flowLayoutPanel1.Margin = new Padding(2);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(972, 49);
+            flowLayoutPanel1.Size = new Size(1389, 82);
             flowLayoutPanel1.TabIndex = 2;
             // 
             // btnCopyUrl
             // 
-            btnCopyUrl.Location = new Point(274, 2);
-            btnCopyUrl.Margin = new Padding(2);
+            btnCopyUrl.Location = new Point(393, 3);
             btnCopyUrl.Name = "btnCopyUrl";
-            btnCopyUrl.Size = new Size(134, 32);
+            btnCopyUrl.Size = new Size(191, 53);
             btnCopyUrl.TabIndex = 2;
             btnCopyUrl.Text = "Get/Set URL";
             btnCopyUrl.UseVisualStyleBackColor = true;
@@ -107,10 +102,9 @@
             // 
             // btnTest
             // 
-            btnTest.Location = new Point(412, 2);
-            btnTest.Margin = new Padding(2);
+            btnTest.Location = new Point(590, 3);
             btnTest.Name = "btnTest";
-            btnTest.Size = new Size(111, 32);
+            btnTest.Size = new Size(159, 53);
             btnTest.TabIndex = 3;
             btnTest.Text = "Test";
             btnTest.UseVisualStyleBackColor = true;
@@ -118,36 +112,37 @@
             // 
             // btnParseLvhn
             // 
-            btnParseLvhn.Location = new Point(528, 3);
+            btnParseLvhn.Location = new Point(756, 5);
+            btnParseLvhn.Margin = new Padding(4, 5, 4, 5);
             btnParseLvhn.Name = "btnParseLvhn";
-            btnParseLvhn.Size = new Size(205, 31);
+            btnParseLvhn.Size = new Size(293, 52);
             btnParseLvhn.TabIndex = 3;
             btnParseLvhn.Text = "Parse lvhn.org doctor list";
             btnParseLvhn.UseVisualStyleBackColor = true;
             btnParseLvhn.Click += btnParseLvhn_Click;
             // 
-            // saveExcelFileDialog
-            // 
-            saveExcelFileDialog.Filter = "Excel Spreadsheet|*.xlsx";
-            // 
             // btnClearDatabase
             // 
-            btnClearDatabase.Location = new Point(739, 3);
+            btnClearDatabase.Location = new Point(1057, 5);
+            btnClearDatabase.Margin = new Padding(4, 5, 4, 5);
             btnClearDatabase.Name = "btnClearDatabase";
-            btnClearDatabase.Size = new Size(96, 31);
+            btnClearDatabase.Size = new Size(197, 52);
             btnClearDatabase.TabIndex = 4;
             btnClearDatabase.Text = "Clear Database";
             btnClearDatabase.UseVisualStyleBackColor = true;
             btnClearDatabase.Click += btnClearDatabase_Click;
             // 
+            // saveExcelFileDialog
+            // 
+            saveExcelFileDialog.Filter = "Excel Spreadsheet|*.xlsx";
+            // 
             // frmIbxDocParser
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(972, 713);
+            ClientSize = new Size(1389, 1188);
             Controls.Add(webView);
             Controls.Add(flowLayoutPanel1);
-            Margin = new Padding(2);
             Name = "frmIbxDocParser";
             Text = "IBX Doctor Parser";
             Load += Form1_Load;

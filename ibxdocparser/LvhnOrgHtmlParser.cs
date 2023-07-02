@@ -65,6 +65,7 @@ namespace ibxdocparser
             {
                 Debug.WriteLine($"Parsing results for page {page + 1}");
                 Uri pageUri = SetPageNumber(listingUrl, page);
+                await Utilities.RequestDelayAsync();
                 string html = await Utilities.DownloadHtmlAsync(pageUri);
                 var parser = new LvhnSummaryNodesParser(html, pageUri);
                 List<LvhnDocSummary> summariesForPage = parser.Parse().ToList();
@@ -76,6 +77,7 @@ namespace ibxdocparser
 
         public static async Task<LvhnDocDetails> ParseDocDetailsAsync(Uri listingUrl)
         {
+            await Utilities.RequestDelayAsync();
             string html = await Utilities.DownloadHtmlAsync(listingUrl);
             var parser = new LvhnDetailsParser(html, listingUrl);
             var result = parser.Parse();

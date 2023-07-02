@@ -25,8 +25,20 @@ namespace ibxdocparser {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"https://ibx.healthsparq.com/healthsparq/public/#/one/city=Philadelphia&state=PA&country=&insurerCode=IBXBLUE_I&brandCode=IBXBLUECOMM&productCode=all/search/isPromotionSearch=true&key=Internal%2520Medicine&location=1200%2520Cedar%2520Crest%2520Boulevard%252C%2520Allentown%252C%2520PA%252018104&page=1&productCode=360&query=Internal%2520Medicine&radius=3&searchCategory=SPECIALTY&searchType=SYNONYM_PERSON")]
+        public string IbxSearchHome {
+            get {
+                return ((string)(this["IbxSearchHome"]));
+            }
+            set {
+                this["IbxSearchHome"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) " +
-            "Chrome/114.0.0.0 Safari/537.36 Edg/114.0.1823.41")]
+            "Chrome/114.0.0.0 Safari/537.36 Edg/114.0.1823.43")]
         public string BrowserUserAgent {
             get {
                 return ((string)(this["BrowserUserAgent"]));
@@ -38,13 +50,37 @@ namespace ibxdocparser {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"https://ibx.healthsparq.com/healthsparq/public/#/one/city=Philadelphia&state=PA&country=&insurerCode=IBXBLUE_I&brandCode=IBXBLUECOMM&productCode=all/search/isPromotionSearch=true&key=Internal%2520Medicine&location=1200%2520Cedar%2520Crest%2520Boulevard%252C%2520Allentown%252C%2520PA%252018104&page=1&productCode=360&query=Internal%2520Medicine&radius=3&searchCategory=SPECIALTY&searchType=SYNONYM_PERSON")]
-        public string IbxSearchHome {
+        [global::System.Configuration.DefaultSettingValueAttribute("1500")]
+        public int MinDelay {
             get {
-                return ((string)(this["IbxSearchHome"]));
+                return ((int)(this["MinDelay"]));
             }
             set {
-                this["IbxSearchHome"] = value;
+                this["MinDelay"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3000")]
+        public int MaxDelay {
+            get {
+                return ((int)(this["MaxDelay"]));
+            }
+            set {
+                this["MaxDelay"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DoctorSearch.accdb")]
+        public string DatabaseFileName {
+            get {
+                return ((string)(this["DatabaseFileName"]));
+            }
+            set {
+                this["DatabaseFileName"] = value;
             }
         }
     }

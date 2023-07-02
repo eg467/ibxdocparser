@@ -5,6 +5,23 @@ namespace ibxdocparser
     public static class Utilities
     {
 
+        private static readonly Random _random = new();
+
+        public static Task RequestDelayAsync()
+        {
+            int minDelay = AppSettings.Default.MinDelay;
+            int maxDelay = AppSettings.Default.MaxDelay;
+
+            if (minDelay < 0 || maxDelay < 0 || minDelay > maxDelay)
+            {
+                throw new ArgumentException("The minimum and maximum delays in settings must be greater than or equal to 0.");
+            }
+
+            int randomDelay = _random.Next(minDelay, maxDelay + 1);
+            return Task.Delay(randomDelay);
+        }
+
+
         /// <summary>
         /// Downloads a web page's source code contents.
         /// </summary>
@@ -12,6 +29,8 @@ namespace ibxdocparser
         /// <returns></returns>
         public static async Task<string> DownloadHtmlAsync(Uri url)
         {
+
+
             using HttpClient client = new();
             try
             {

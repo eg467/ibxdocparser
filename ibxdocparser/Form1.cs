@@ -18,7 +18,8 @@ namespace ibxdocparser
         public frmIbxDocParser()
         {
             InitializeComponent();
-            _database = new("Data.accdb");
+            string databaseFileName = !string.IsNullOrEmpty(AppSettings.Default.DatabaseFileName) ? AppSettings.Default.DatabaseFileName : "DocSearch.accdb";
+            _database = new(databaseFileName);
             _ibxSaver = new IbxDatabaseSaver(_database);
             _lvhnSaver = new LvhnDatabaseSaver(_database);
         }
@@ -126,13 +127,16 @@ namespace ibxdocparser
         /// Trigger a load of the next doctor profile page so its JSON can be intercepted.
         /// </summary>
         /// <returns></returns>
-        private bool AdvanceToNextProfile()
+        private async Task<bool> AdvanceToNextProfilePageAsync()
         {
 
             if (!_profileUriQueue.TryPeek(out var uri))
             {
                 return false;
             }
+
+
+            await Utilities.RequestDelayAsync();
 
             webView.Tag = uri;
             webView.CoreWebView2.Navigate(uri);
@@ -146,7 +150,7 @@ namespace ibxdocparser
         {
             if (_profileUriQueue.Any())
             {
-                AdvanceToNextProfile();
+                await AdvanceToNextProfilePageAsync();
             }
             else
             {
@@ -184,7 +188,12 @@ namespace ibxdocparser
 
         private async void btnParseListings_Click(object sender, EventArgs e)
         {
-            await _ibxSaver.StartSessionAsync("Ibx Profile Search", webView.Source);
+            string searchDescription = Microsoft.VisualBasic.Interaction.InputBox(
+                "Enter a text description for the search.",
+                "Search Description",
+                DefaultResponse: "IBX Profile Search");
+
+            await _ibxSaver.StartSessionAsync(searchDescription, webView.Source);
             var scriptPath = Path.Combine(Environment.CurrentDirectory, "Javascript", "GetIbxDocProfilesFromListing.js");
             string script = File.ReadAllText(scriptPath);
             await webView.CoreWebView2.ExecuteScriptAsync(script);
@@ -230,7 +239,13 @@ namespace ibxdocparser
                 return;
             }
 
-            await _lvhnSaver.StartSessionAsync("LVHN Profile Search", new Uri(url));
+            string searchDescription = Microsoft.VisualBasic.Interaction.InputBox(
+                "Enter a text description for the search.",
+                "Search Description",
+                DefaultResponse: "LVHN Profile Search");
+
+
+            await _lvhnSaver.StartSessionAsync(searchDescription, new Uri(url));
 
             List<LvhnProfile> profiles = await LvhnOrgHtmlParser.ParseFullResultsAsync(new Uri(url));
 

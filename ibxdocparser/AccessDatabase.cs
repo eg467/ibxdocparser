@@ -7,9 +7,12 @@ using DAO = Microsoft.Office.Interop.Access.Dao; // Add a reference to the Micro
 
 namespace ibxdocparser
 {
+
+    internal record SearchSession(int Id, string Name, string ImageDir);
+
     internal class AccessDatabase
     {
-        public int? CurrentSearchId { get; private set; }
+        public SearchSession? CurrentSession { get; private set; }
         public string FilePath { get; }
         private readonly string _connectionString;
 
@@ -81,6 +84,9 @@ namespace ibxdocparser
                 return;
             }
 
+            var fullDbPath = Path.GetFullPath(FilePath);
+
+
             CreateDatabase();
 
             string CreateLinkingTable(string tableName, string profileTable, string profileColumn, string linkedTable, string linkedColumn) =>
@@ -92,7 +98,7 @@ namespace ibxdocparser
 
             var commands = new (string Label, string Command)[] {
                 // TABLES
-                ("Searches","CREATE TABLE Searches (Id COUNTER PRIMARY KEY, Label TEXT, Uri TEXT, CreatedOn DATETIME DEFAULT Date())"),
+                ("Searches","CREATE TABLE Searches (Id COUNTER PRIMARY KEY, Label TEXT, Uri TEXT, ImageDir TEXT, CreatedOn DATETIME DEFAULT Date())"),
                 ("Locations","CREATE TABLE Locations (Id COUNTER PRIMARY KEY, Name TEXT, Street1 TEXT, Street2 TEXT, City TEXT, State TEXT, Zip TEXT, Phone TEXT)"),
                 ("ExperienceInstitutions","CREATE TABLE ExperienceInstitutions (Id COUNTER PRIMARY KEY, Name TEXT)"),
                 ("ExperienceTypes","CREATE TABLE ExperienceTypes (Id COUNTER PRIMARY KEY, Name TEXT)"),
@@ -111,7 +117,7 @@ namespace ibxdocparser
                 ("IbxProfileLocations", CreateIbxLinkingTable("IbxProfileLocations", "Locations")),
 
                 // LVHN
-                ("LvhnProfiles", "CREATE TABLE LvhnProfiles (Id COUNTER PRIMARY KEY, Name TEXT, DetailsUri TEXT, ImageUri TEXT, AcceptingNewPatients YESNO, Bio TEXT, ScholarlyWorksUri TEXT)"),
+                ("LvhnProfiles", "CREATE TABLE LvhnProfiles (Id COUNTER PRIMARY KEY, Name TEXT, DetailsUri TEXT, ImageUri TEXT, ImagePath TEXT, AcceptingNewPatients YESNO, Bio TEXT, ScholarlyWorksUri TEXT)"),
                 ("LvhnProfileSearchResults", CreateLvhnLinkingTable("LvhnProfileSearchResults", "Searches")),
                 ("LvhnProfileExperience", CreateLvhnLinkingTable("LvhnProfileExperience", "ExperienceHistories")),
                 ("LvhnProfileAreasOfFocus", CreateLvhnLinkingTable("LvhnProfileAreasOfFocus", "AreasOfFocus")),
@@ -133,11 +139,23 @@ namespace ibxdocparser
 
         public async Task StartSearchAsync(string label = "", string uri = "")
         {
-            CurrentSearchId = await InsertAsync("Searches", new (string f, object? v)[] {
+            var fullDbPath = Path.GetFullPath(FilePath);
+            var dbDir = Path.GetDirectoryName(fullDbPath) ?? "";
+            var imageDir = Path.Combine(
+                dbDir,
+                "Images",
+                DateTime.Now.ToString("s").Replace(':', '_'));
+
+            Directory.CreateDirectory(imageDir);
+
+            int currentSessionId = await InsertAsync("Searches", new (string f, object? v)[] {
                 ("Label", label),
                 ("Uri", uri),
+                ("ImageDir", imageDir),
                 ("CreatedOn", DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"))
             });
+
+            CurrentSession = new(currentSessionId, label, imageDir);
         }
 
         #region Query Helpers
@@ -304,12 +322,12 @@ namespace ibxdocparser
                         ("ImageUri", profile.ImageUri ?? "")
                 );
 
-                if (CurrentSearchId.HasValue)
+                if (CurrentSession is not null)
                 {
                     await InsertAsync(
                         "IbxProfileSearchResults",
                         ("IbxProfilesId", profileId),
-                        ("SearchesId", CurrentSearchId.Value));
+                        ("SearchesId", CurrentSession.Id));
                 }
 
                 if (newProfile)
@@ -364,22 +382,40 @@ namespace ibxdocparser
                 searchCommand.Parameters.AddWithValue("@DetailsUri", profile.Summary?.DetailsUri?.ToString());
                 int? profileId = await SearchForIdAsync(searchCommand);
                 bool newProfile = !profileId.HasValue;
+
+                // Download Image and save path
+                var imagePath = "";
+                string? imageUri = profile.Summary?.ImageUri?.ToString();
+                if (CurrentSession is not null && imageUri is not null)
+                {
+                    var filenameWithoutExtension = Path.GetFileNameWithoutExtension(imageUri);
+                    // Remove extraneous details after extension, like a query string.
+                    var extension = System.Text.RegularExpressions.Regex.Match(
+                        Path.GetExtension(imageUri),
+                        @"^[-\.\w]+"
+                    ).Value;
+                    var newFilename = $"{filenameWithoutExtension}-{Guid.NewGuid()}{extension}";
+                    imagePath = Path.Combine(CurrentSession.ImageDir, newFilename);
+                    await Utilities.DownloadImageAsync(imageUri, imagePath);
+                }
+
                 profileId ??= await InsertAsync(
                         "LvhnProfiles",
                         ("Name", profile.Summary?.Name ?? ""),
                         ("DetailsUri", profile.Summary?.DetailsUri?.ToString() ?? ""),
                         ("ImageUri", profile.Summary?.ImageUri?.ToString() ?? ""),
+                        ("ImagePath", imagePath),
                         ("AcceptingNewPatients", profile.Summary?.AcceptingNewPatients ?? false),
                         ("Bio", profile.Details?.BioDescription ?? ""),
                         ("ScholarlyWorksUri", profile.Details?.ScholarlyWorksLink?.ToString() ?? "")
                 );
 
-                if (CurrentSearchId.HasValue)
+                if (CurrentSession is not null)
                 {
                     await InsertAsync(
                         "LvhnProfileSearchResults",
                         ("LvhnProfilesId", profileId),
-                        ("SearchesId", CurrentSearchId.Value));
+                        ("SearchesId", CurrentSession.Id));
                 }
 
                 if (newProfile)
@@ -426,6 +462,8 @@ namespace ibxdocparser
         }
 
         #endregion
+
+
     }
 
     internal abstract class DatabaseSaver<TProfile> : IProfileSaver<TProfile>
