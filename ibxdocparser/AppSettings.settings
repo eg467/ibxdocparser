@@ -15,7 +15,7 @@
       <Value Profile="(Default)">3000</Value>
     </Setting>
     <Setting Name="DatabaseFileName" Type="System.String" Scope="User">
-      <Value Profile="(Default)">DoctorSearch.accdb</Value>
+      <Value Profile="(Default)">HealthProviders.accdb</Value>
     </Setting>
   </Settings>
 </SettingsFile>
