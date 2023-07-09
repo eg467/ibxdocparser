@@ -239,13 +239,19 @@ namespace ibxdocparser
                 return;
             }
 
+
+
             string searchDescription = Microsoft.VisualBasic.Interaction.InputBox(
                 "Enter a text description for the search.",
                 "Search Description",
                 DefaultResponse: "LVHN Profile Search");
 
+            string specialty = Microsoft.VisualBasic.Interaction.InputBox(
+                "Enter the specialty searched for.",
+                "Specialty");
+            var searchTerms = new Dictionary<string, string>() { { "Specialty", specialty } };
 
-            await _lvhnSaver.StartSessionAsync(searchDescription, new Uri(url));
+            await _lvhnSaver.StartSessionAsync(searchDescription, new Uri(url), searchTerms);
 
             List<LvhnProfile> profiles = await LvhnOrgHtmlParser.ParseFullResultsAsync(new Uri(url));
 

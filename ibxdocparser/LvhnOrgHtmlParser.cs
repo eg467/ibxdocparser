@@ -77,8 +77,11 @@ namespace ibxdocparser
 
         public static async Task<LvhnDocDetails> ParseDocDetailsAsync(Uri listingUrl)
         {
-            await Utilities.RequestDelayAsync();
-            string html = await Utilities.DownloadHtmlAsync(listingUrl);
+            //await Utilities.RequestDelayAsync();
+            //string html = await Utilities.DownloadHtmlAsync(listingUrl);
+
+            // The ratings are populated dynamically, so pull from a browser request
+            string html = await FullBrowserResponse.FullHtmlAsync(listingUrl.ToString(), 1000);
             var parser = new LvhnDetailsParser(html, listingUrl);
             var result = parser.Parse();
             return result;
@@ -133,10 +136,29 @@ namespace ibxdocparser
         Experience[] Certifications,
         Uri? ScholarlyWorksLink,
         string[] ConditionsTreated,
-        string[] ServicesOffered
+        string[] ServicesOffered,
+        Rating[] Ratings
     );
 
-    internal record Experience(string ExperienceType, string Institution, int? Year = null);
+    internal partial record Experience(string ExperienceType, string Details, string Institution, int? Year = null)
+    {
+        public ExperienceLevel Level
+        {
+            get
+            {
+                var noSpaces = SpaceRegex().Replace(ExperienceType, "");
+                var pattern = string.Join("|", Enum.GetValues<ExperienceLevel>());
+                var match = System.Text.RegularExpressions.Regex.Match(noSpaces, pattern, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+                return match?.Success == true
+                    ? Enum.Parse<ExperienceLevel>(match.Value, true)
+                    : ExperienceLevel.Unknown;
+            }
+
+        }
+
+        [System.Text.RegularExpressions.GeneratedRegex("[\\s\\r\\n]")]
+        private static partial System.Text.RegularExpressions.Regex SpaceRegex();
+    }
 
     internal record LvhnProfile(LvhnDocSummary? Summary, LvhnDocDetails? Details, string? Error);
 }

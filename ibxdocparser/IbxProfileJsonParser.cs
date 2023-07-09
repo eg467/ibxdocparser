@@ -61,26 +61,30 @@ namespace ibxdocparser
 
             var education =
                 GetAttributeValue(providerAttrs, "EDUCATION")
-                  ?.EnumerateArray()
-                  .Where(x => !x.GetPropertyString("code")?.Equals("Residency", StringComparison.CurrentCultureIgnoreCase) == true)
-                  .Select(x => new Experience(
-                          x.GetPropertyString("code") ?? "",
-                          x.GetPropertyString("institution") ?? "",
-                          int.TryParse(x.GetPropertyString("year"), out var year) ? year : null))
-                  .DistinctBy(x => x.ToString().ToUpper())
-                  .ToArray()
+                    ?.EnumerateArray()
+                    .Where(x => !x.GetPropertyString("code")?.Equals("Residency", StringComparison.CurrentCultureIgnoreCase) == true)
+                    .Select(x => new Experience(
+                        x.GetPropertyString("code") ?? "",
+                        "",
+                        x.GetPropertyString("institution") ?? "",
+                        int.TryParse(x.GetPropertyString("year"), out var year) ? year : null
+                    ))
+                    .DistinctBy(x => x.ToString().ToUpper())
+                    .ToArray()
                 ?? Array.Empty<Experience>();
 
             var residency =
                 GetAttributeValue(providerAttrs, "EDUCATION")
-                  ?.EnumerateArray()
-                  .Where(x => x.GetPropertyString("code")?.Equals("Residency", StringComparison.CurrentCultureIgnoreCase) == true)
-                  .Select(x => new Experience(
-                          x.GetPropertyString("code") ?? "",
-                          x.GetPropertyString("institution") ?? "",
-                          int.TryParse(x.GetPropertyString("year"), out var year) ? year : null))
-                  .DistinctBy(x => x.ToString().ToUpper())
-                  .ToArray()
+                    ?.EnumerateArray()
+                    .Where(x => x.GetPropertyString("code")?.Equals("Residency", StringComparison.CurrentCultureIgnoreCase) == true)
+                    .Select(x => new Experience(
+                        x.GetPropertyString("code") ?? "",
+                        "",
+                        x.GetPropertyString("institution") ?? "",
+                        int.TryParse(x.GetPropertyString("year"), out var year) ? year : null
+                    ))
+                    .DistinctBy(x => x.ToString().ToUpper())
+                    .ToArray()
                 ?? Array.Empty<Experience>();
 
             try

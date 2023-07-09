@@ -41,7 +41,7 @@ namespace ibxdocparser
             _saver.Dispose();
         }
 
-        public Task StartSessionAsync(string label, Uri? source)
+        public Task StartSessionAsync(string label, Uri? source, Dictionary<string, string>? SearchTerms = null)
         {
             _saver.ProfileWorksheetName = label;
             return Task.CompletedTask;

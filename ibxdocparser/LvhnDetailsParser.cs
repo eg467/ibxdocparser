@@ -80,7 +80,7 @@ namespace ibxdocparser
         /// </summary>
         /// <param name="historyType">The label of the type, e.g. Education, Training, or Certifications.</param>
         /// <returns></returns>
-        private Experience[] ParseHistory(string historyType)
+        private Experience[] ParseHistory(string historyType, bool splitByComma = true)
         {
             if (_historyNode is null) goto NotFound;
             var subsection = GetSubsection(_historyNode, historyType);
@@ -104,15 +104,23 @@ namespace ibxdocparser
                     int? year = valueYear ?? titleYear;
                     string type = strippedTitle;
                     string institution = strippedValue;
+                    string details = strippedValue;
 
-                    string[] valueParts = strippedValue.Split(",").Select(x => x.Trim()).ToArray();
-                    if (valueParts.Length > 1)
+                    if (splitByComma)
                     {
-                        institution = valueParts[0];
-                        type = $"{type} ({valueParts[1]})";
+                        string[] valueParts = strippedValue.Split(",").Select(x => x.Trim()).ToArray();
+                        if (valueParts.Length > 1)
+                        {
+                            institution = valueParts[0];
+                            details = valueParts[1];
+                        }
+                        else
+                        {
+                            details = "";
+                        }
                     }
 
-                    return new Experience(type, institution, year);
+                    return new Experience(type, details, institution, year);
                 })
                 .ToArray();
 
@@ -133,15 +141,65 @@ namespace ibxdocparser
             }
         }
 
+        private Rating[] ParseRatings()
+        {
+            var ratingsContainer = _node.SelectSingleNode($".//div[{Utilities.XpathAttrContains("ds-breakdown")}]");
+
+            if (ratingsContainer is null)
+            {
+                return Array.Empty<Rating>();
+            }
+
+            // Parse the overall rating
+            var ratings = ratingsContainer.ChildNodes
+                .Where(n => n.Name == "div")
+                .Select(n =>
+                    {
+                        var text = n.InnerText.Trim();
+                        var pattern = @"(?<average>[\d\.]+) out of (?<max>\d+)[\D]+(?<count>\d+) Ratings";
+                        var match = System.Text.RegularExpressions.Regex.Match(text, pattern, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+                        if (!match.Success)
+                        {
+                            return null;
+                        }
+
+                        var average = double.Parse(match.Groups["average"].Value);
+                        var maxRating = int.Parse(match.Groups["max"].Value);
+                        var count = int.Parse(match.Groups["count"].Value);
+                        return new Rating(average, maxRating, "Overall", RatingSource.Lvhn, count);
+                    })
+                .Where(x => x is not null)
+                .Cast<Rating>()
+                .ToList();
+
+
+            // Parse ratings by category
+            IEnumerable<Rating> categoryRatings = ratingsContainer.SelectNodes($".//li")?.Select(li =>
+            {
+                var descriptionWithCount = li.SelectSingleNode($"./span[{Utilities.XpathAttrContains("ds-questiontext")}]")?.InnerText.Trim() ?? "";
+                var pattern = @"^(?<description>[^\(]+)\s*\((?<count>\d+)\)|^(?<description>[^\(]+)$";
+                var match = System.Text.RegularExpressions.Regex.Match(descriptionWithCount, pattern);
+                var description = match.Groups["description"].Success ? match.Groups["description"].Value.Trim() : "";
+                var count = match.Groups["count"].Success ? int.Parse(match.Groups["count"].Value) : -1;
+                var ratingStr = li.SelectSingleNode($"./span[{Utilities.XpathAttrContains("ds-average")}]")?.InnerText.Trim() ?? "";
+                var rating = double.TryParse(ratingStr, out var parsedRating) ? parsedRating : -1;
+                var maxRating = 5;
+                return new Rating(rating, maxRating, description, RatingSource.Lvhn, count);
+            }) ?? Enumerable.Empty<Rating>();
+
+            ratings.AddRange(categoryRatings);
+            return ratings.ToArray();
+        }
+
         private string[] ParseConditionsTreated() => _node
-                .SelectSingleNode($"//ul[{Utilities.XpathAttrContains("full")} and @aria-describedby='conditions-label']")
+                .SelectSingleNode($".//ul[{Utilities.XpathAttrContains("full")} and @aria-describedby='conditions-label']")
                 ?.SelectNodes(".//li")
                 ?.Select(x => x.GetEscapedInnerText())
                 .Where(s => s.Length > 0)
                 .ToArray()
             ?? Array.Empty<string>();
         private string[] ParseServicesOffered() => _node
-                .SelectSingleNode($"//ul[{Utilities.XpathAttrContains("full")} and @aria-describedby='services-label']")
+                .SelectSingleNode($".//ul[{Utilities.XpathAttrContains("full")} and @aria-describedby='services-label']")
                 ?.SelectNodes(".//li")
                 ?.Select(x => x.GetEscapedInnerText())
                 .Where(s => s.Length > 0)
@@ -154,10 +212,11 @@ namespace ibxdocparser
                 ParseBioDescription(),
                 ParseHistory("Education"),
                 ParseHistory("Training"),
-                ParseHistory("Certifications"),
+                ParseHistory("Certifications", false),
                 ParseScholarlyWorksLink(),
                 ParseConditionsTreated(),
-                ParseServicesOffered());
+                ParseServicesOffered(),
+                ParseRatings());
 
             return result;
         }

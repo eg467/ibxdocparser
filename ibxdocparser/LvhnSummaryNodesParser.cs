@@ -17,8 +17,9 @@ namespace ibxdocparser
             var doc = new HtmlAgilityPack.HtmlDocument();
             doc.LoadHtml(html);
 
-            var query = $"//div[{Utilities.XpathAttrContains("result-column")}]//article[{Utilities.XpathAttrContains("node--type-doctor")}]";
-            var nodes = doc.DocumentNode.SelectNodes(query);
+            var nodes = doc.DocumentNode
+                .SelectSingleNode($"//div[{Utilities.XpathAttrContains("result-column")}]")
+                .SelectNodes($".//article[{Utilities.XpathAttrContains("node--type-doctor")}]");
 
             _resultNodes = nodes?.ToArray()
                 ?? Array.Empty<HtmlNode>();
