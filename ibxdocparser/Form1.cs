@@ -39,9 +39,15 @@ namespace ibxdocparser
             await webView.EnsureCoreWebView2Async(null);
             webView.CoreWebView2.Settings.IsWebMessageEnabled = true;
             webView.CoreWebView2.WebMessageReceived += CoreWebView2_WebMessageReceived;
+            webView.CoreWebView2.NewWindowRequested += CoreWebView2_NewWindowRequested;
             webView.CoreWebView2.WebResourceResponseReceived += CoreWebView2_WebResourceResponseReceived;
             webView.CoreWebView2.Settings.UserAgent = AppSettings.Default.BrowserUserAgent;
             System.Diagnostics.Debug.WriteLine("InitializeWebView (end)");
+        }
+
+        private void CoreWebView2_NewWindowRequested(object? sender, CoreWebView2NewWindowRequestedEventArgs e)
+        {
+            e.NewWindow = webView.CoreWebView2;
         }
 
         /// <summary>

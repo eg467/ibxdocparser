@@ -41,6 +41,7 @@ namespace ibxdocparser
                 string? error = null;
                 try
                 {
+                    await Utilities.RequestDelayAsync();
                     details = await ParseDocDetailsAsync(summary.DetailsUri);
                 }
                 catch (Exception ex)
