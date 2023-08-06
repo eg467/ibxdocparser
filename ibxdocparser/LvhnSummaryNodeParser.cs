@@ -68,10 +68,11 @@ namespace ibxdocparser
             return new Uri(_listingSource, href);
         }
 
-        private Location[] ParseLocations() =>
-            _resultNode
-                .SelectSingleNode($".//div[{Utilities.XpathAttrContains("locations")}]")
-                .SelectNodes($".//p[{Utilities.XpathAttrContains("address")}]")
+        private Location[] ParseLocations()
+        {
+            return _resultNode
+                ?.SelectSingleNode($".//div[{Utilities.XpathAttrContains("locations")}]")
+                ?.SelectNodes($".//p[{Utilities.XpathAttrContains("address")}]")
                 ?.Select(locationNode => new Location()
                 {
                     Address = new(
@@ -86,6 +87,8 @@ namespace ibxdocparser
                 .Distinct()
                 .ToArray()
                 ?? Array.Empty<Location>();
+        }
+
 
         public string[] ParseAreasOfFocus() =>
             (_resultNode.SelectNodes($".//div[{Utilities.XpathAttrContains("highlights")}]/h4")
