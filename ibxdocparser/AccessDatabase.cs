@@ -775,7 +775,7 @@ namespace ibxdocparser
 
         public Task StartSessionAsync(string label, Uri? source, Dictionary<string, string>? searchTerms = null)
         {
-            var specialty = searchTerms?.GetValueOrDefault("Specialty");
+            string specialty = searchTerms?.GetValueOrDefault("Specialty", "") ?? "";
             return _db.StartSearchAsync(label, source?.ToString() ?? "", specialty);
         }
 

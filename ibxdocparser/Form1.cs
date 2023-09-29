@@ -209,6 +209,12 @@ namespace ibxdocparser
         {
             if (Uri.IsWellFormedUriString(uri, UriKind.Absolute))
             {
+                if (uri != AppSettings.Default.IbxSearchHome)
+                {
+                    AppSettings.Default.IbxSearchHome = uri;
+                    AppSettings.Default.Save();
+                }
+
                 webView.CoreWebView2.Navigate(uri);
             }
             else
@@ -255,7 +261,7 @@ namespace ibxdocparser
             string specialty = Microsoft.VisualBasic.Interaction.InputBox(
                 "Enter the specialty searched for.",
                 "Specialty");
-            var searchTerms = new Dictionary<string, string>() { { "Specialty", specialty } };
+            var searchTerms = new Dictionary<string, string>() { { "Specialty", specialty ?? "" } };
 
             await _lvhnSaver.StartSessionAsync(searchDescription, new Uri(url), searchTerms);
 
