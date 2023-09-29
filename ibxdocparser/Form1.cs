@@ -84,7 +84,7 @@ namespace ibxdocparser
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void CoreWebView2_WebResourceResponseReceived(object? sender, Microsoft.Web.WebView2.Core.CoreWebView2WebResourceResponseReceivedEventArgs e)
+        private async void CoreWebView2_WebResourceResponseReceived(object? sender, CoreWebView2WebResourceResponseReceivedEventArgs e)
         {
             static async Task<string> GetResponseContentAsync(CoreWebView2WebResourceResponseView response)
             {
@@ -102,6 +102,9 @@ namespace ibxdocparser
                 {
                     string profileJson = await GetResponseContentAsync(e.Response);
                     IbxProfile profile = _profileParser.Parse(profileJson);
+
+                    Debug.WriteLine($"Parsing {profile.FirstName} {profile.LastName} from {e.Request.Uri}");
+
                     await _ibxSaver.AddProfileAsync(profile);
 
                     ProfileProcessed((string)(webView.Tag ?? ""));

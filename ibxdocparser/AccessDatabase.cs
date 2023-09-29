@@ -361,7 +361,7 @@ namespace ibxdocparser
             {
                 var searchQuery = $"SELECT TOP 1 Id FROM Locations WHERE Name = @Name AND Street1 = @Street1 AND Street2 = @Street2 AND City = @City AND State = @State AND Zip = @Zip";
                 var searchCommand = new OleDbCommand(searchQuery, connection);
-                searchCommand.Parameters.AddWithValue("@Name", location.Name);
+                searchCommand.Parameters.AddWithValue("@Name", location.Name ?? "");
                 searchCommand.Parameters.AddWithValue("@Street1", location.Address?.Line1 ?? "");
                 searchCommand.Parameters.AddWithValue("@Street2", location.Address?.Line2 ?? "");
                 searchCommand.Parameters.AddWithValue("@City", location.Address?.City ?? "");
